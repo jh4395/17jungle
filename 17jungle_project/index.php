@@ -134,7 +134,7 @@ if (isset ( $_SESSION ['id'] )) {
 					<div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
 						<div class="pull-left ">
 							<ul class="userMenu ">
-								<li><a href="#"> <span class="hidden-xs">HELP</span><i
+								<li><a href="#"> <span class="hidden-xs">HELP me</span><i
 										class="glyphicon glyphicon-info-sign hide visible-xs "></i>
 								</a></li>
 								<li class="phone-number"><a href="callto:+12025550151"> <span> <i
