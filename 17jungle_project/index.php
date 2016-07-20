@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-$conn = new mysqli ( "localhost", "joohyung", "dkdk1212", "jh_17jungle" );
+$conn = new mysqli ( "localhost", "17jungle", "playjungle", "jh_17jungle" );
 
 if ($conn->connect_error) {
 	die ( "Connection failed: " . $conn->connect_error );
@@ -134,7 +134,7 @@ if (isset ( $_SESSION ['id'] )) {
 					<div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
 						<div class="pull-left ">
 							<ul class="userMenu ">
-								<li><a href="#"> <span class="hidden-xs">HELP me</span><i
+								<li><a href="#"> <span class="hidden-xs">HELP ME</span><i
 										class="glyphicon glyphicon-info-sign hide visible-xs "></i>
 								</a></li>
 								<li class="phone-number"><a href="callto:+12025550151"> <span> <i

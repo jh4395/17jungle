@@ -4,7 +4,7 @@
 	
 <?php
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-    $conn = new mysqli("localhost","joohyung","dkdk1212","jh_17jungle");		
+    $conn = new mysqli("localhost","17jungle", "playjungle","jh_17jungle");		
     
 	if( $conn->connect_error) {
     	die("Connection failed: ".$conn->connect_error);
