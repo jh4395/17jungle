@@ -866,22 +866,23 @@ if (isset ( $_SESSION ['id'] )) {
 
 			<div class="swiper-container swiper-container-h">
 				<div class="swiper-wrapper">
+				<!--  
 					<div class="swiper-slide slide-2x">
 						<div class="box-slider-content">
 							<div class="box-text">
-								<h1>NEW COLLECTION</h1>
+								<h1>SRL 렌탈샵</h1>
 
-								<p>Veggies es bonus vobis, proinde vos postulo essum magis
-									kohlrabi welsh onion daikon amaranth.</p>
-								<a class="btn btn-stroke-light"> SHOP NOW</a>
+								<p>에스엘알 렌트에서는 카드/현금/계산서 발행시 금액이 모두 동일합니다.</p>
+								<a class="btn btn-stroke-light" href="http://www.slrrent.com/index_home.php"> SHOP NOW</a>
 							</div>
 							<div class="box-content-overly">
-								<!-- Delete this div if you dont want overly effect -->
+								
 							</div>
-							<a href="#" class="box-img"> <img src="images/slider/box/1.jpg"
+							<a href="#" class="box-img"> <img src="images/slider/box/1.png"
 								alt="img"></a>
 						</div>
 					</div>
+					-->
 					<div class="swiper-slide slide-2x">
 						<div class="slider-box-top">
 							<div class="box-slider-content">
@@ -890,7 +891,7 @@ if (isset ( $_SESSION ['id'] )) {
 										<h1 class="bolder-style light">
 											<a href="#">SALE</a>
 										</h1>
-										<span class="bolder-sub"> <a href="#"> EXTRA 80% OFF </a>
+										<span class="bolder-sub"> <a href="#"> SLR 렌탈 </a>
 										</span>
 									</div>
 								</div>
@@ -917,13 +918,14 @@ if (isset ( $_SESSION ['id'] )) {
 							</div>
 						</div>
 					</div>
+					<!--  -->
 					<div class="swiper-slide slide-2x">
 						<div class="box-slider-content">
 							<div class="box-text bottom-align">
-								<h1>MEN COLLECTION</h1>
-								<a class="btn btn-stroke-light"> SHOP NOW</a>
+								<h1>제이포</h1>
+								<a class="btn btn-stroke-light" href="http://www.j4.co.kr/"> SHOP NOW</a>
 							</div>
-							<a href="#" class="box-img"> <img src="images/slider/box/3.jpg"
+							<a href="#" class="box-img"> <img src="images/slider/box/3.png"
 								alt="img"></a>
 
 							<div class="box-content-overly">
@@ -934,21 +936,28 @@ if (isset ( $_SESSION ['id'] )) {
 					<div class="swiper-slide slide-4x">
 						<div class="box-4in a">
 							<div class="box-slider-content">
-								<a href="#" class="box-img"> <img src="images/slider/box/4a.jpg"
+								<a href="http://www.j4.co.kr/232" class="box-img"> <img src="images/slider/box/4a.jpg"
 									alt="img"></a>
 
 								<div class="box-content-overly">
-									<a href="#" class="box-blank-url"> </a>
+									<div class="box-text-table">
+										<div class="box-text-cell">
+											<a class="btn btn-default" href="http://www.j4.co.kr/232"> VIEW DEAL</a>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 						<div class="box-4in b">
 							<div class="box-slider-content">
-								<a href="#" class="box-img"> <img src="images/slider/box/4b.jpg"
+								<a href="http://www.j4.co.kr/54388" class="box-img"> <img src="images/slider/box/4b.jpg"
 									alt="img"></a>
-
 								<div class="box-content-overly">
-									<a href="#" class="box-blank-url"> </a>
+									<div class="box-text-table">
+										<div class="box-text-cell">
+											<a class="btn btn-default" href="http://www.j4.co.kr/54388"> VIEW DEAL</a>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -960,7 +969,7 @@ if (isset ( $_SESSION ['id'] )) {
 								<div class="box-content-overly box-content-overly-white">
 									<div class="box-text-table">
 										<div class="box-text-cell">
-											<a class="btn btn-stroke-dark"> VIEW DEAL</a>
+											<a class="btn btn-stroke-dark" href="http://www.j4.co.kr/429"> VIEW DEAL</a>
 										</div>
 									</div>
 								</div>
@@ -974,7 +983,7 @@ if (isset ( $_SESSION ['id'] )) {
 								<div class="box-content-overly box-content-overly-white">
 									<div class="box-text-table">
 										<div class="box-text-cell">
-											<a class="btn btn-stroke-dark"> VIEW DEAL</a>
+											<a class="btn btn-stroke-dark" href="http://www.j4.co.kr/350"> VIEW DEAL</a>
 										</div>
 									</div>
 								</div>
@@ -990,11 +999,10 @@ if (isset ( $_SESSION ['id'] )) {
 								<div class="box-text-table">
 									<div class="box-text-cell ">
 										<div class="box-text-cell-inner dark">
-											<h1>New Summer Look</h1>
+											<h1>한렌탈</h1>
 
-											<p>Veggies es bonus vobis, proinde vos postulo essum magis
-												kohlrabi welsh onion daikon amaranth.</p>
-											<a class="btn btn-stroke-dark"> SHOP NOW</a>
+											<p>전화상담시 최저가 보장!</p>
+											<a class="btn btn-stroke-dark" href="http://www.hanent.com/"> SHOP NOW</a>
 										</div>
 									</div>
 								</div>
@@ -1049,20 +1057,19 @@ if (isset ( $_SESSION ['id'] )) {
 							</div>
 						</div>
 					</div>
-					<div class="swiper-slide slide-1x">
+					<div class="swiper-slide slide-2x">
 						<div class="box-slider-content">
 							<a href="#" class="box-img last-child-slide"> <img
-								src="images/slider/box/5.jpg" alt="img"></a>
+								src="images/slider/box/5.png" alt="img"></a>
 
 							<div class="box-content-overly box-content-overly-white">
 								<div class="box-text-table">
 									<div class="box-text-cell ">
 										<div class="box-text-cell-inner dark">
-											<h1>Discover it</h1>
+											<h1>스타렌탈</h1>
 
-											<p>Veggies es bonus vobis, proinde vos postulo essum magis
-												kohlrabi welsh onion daikon amaranth.</p>
-											<a class="btn btn-stroke-dark"> SHOP NOW</a>
+											<p>영업시간 안내: 24시간 / 카카오톡 아이디:스타렌탈</p>
+											<a class="btn btn-stroke-dark" href="http://starrental.co.kr/"> SHOP NOW</a>
 										</div>
 									</div>
 								</div>
