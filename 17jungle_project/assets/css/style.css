@@ -2913,7 +2913,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
 }
 
 .parallax-image-1 {
-    background: url(../../images/parallax/parallax.jpg);
+    background: url(../../images/parallax/parcel-delivery-package.jpg);
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -3264,6 +3264,11 @@ h5.parallaxSubtitle {
 
 .main-container {
     min-height: 580px;
+}
+
+/* 17jungle 설명 */
+.explain-container {
+    min-height: 150px;
 }
 
 .headerOffset {

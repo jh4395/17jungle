@@ -1423,28 +1423,25 @@ if (isset ( $_SESSION ['id'] )) {
 	<!-- /main container -->
 
 	<div class="parallax-section parallax-image-1">
-		<div class="container">
-			<div class="row ">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<div class="parallax-content clearfix">
-						<h1 class="parallaxPrce">$200</h1>
-
-						<h2 class="uppercase">FREE INTERNATIONAL SHIPPING! Get Free
-							Shipping Coupons</h2>
-
-						<h3>Energistically develop parallel mindshare rather than premier
-							deliverables.</h3>
-
-						<div style="clear: both"></div>
-						<a class="btn btn-discover "> <i class="fa fa-shopping-cart"></i>
-							SHOP NOW
-						</a>
-					</div>
-				</div>
-			</div>
-			<!--/.row-->
-		</div>
-		<!--/.container-->
+	    <div class="container explain-container">
+	        <div class="row ">
+	            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	                <div class="parallax-content clearfix">
+	                    <h1 class="parallaxPrce"> 17JUNGLE RENTAL 이용방법 </h1>
+	
+	                    <h2 class="uppercase">복잡한 대여 방식은 이제 그만! 17JUNGLE로 쉽게 이용하자.</h2>
+						<!-- True Car 사이트 처럼 첫 소개 페이지만들기.
+						/회원가입한다. package에 담는다. 신청한다. 빌린다. 방식으로 갈지 아니면
+						자신만의 package를 만들어보세요.  -->
+	                    <h3> 자신만의 Package를 만들고 빌리고, 나눠요. </h3>
+	
+	                    <div style="clear:both"></div>
+	                    <a class="btn btn-discover "> <i class="fa fa-shopping-cart"></i> PACKAGE 만들기 </a></div>
+	            </div>
+	        </div>
+	        <!--/.row-->
+	    </div>
+    	<!--/.container-->
 	</div>
 	<!--/.parallax-image-1-->
 
