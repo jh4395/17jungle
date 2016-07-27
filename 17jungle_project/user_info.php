@@ -1,11 +1,36 @@
+<?php
+session_start();
+$conn = new mysqli ( "localhost", "17jungle", "playjungle", "jh_17jungle" );
+
+if ($conn->connect_error) {
+	die ( "Connection failed: " . $conn->connect_error );
+}
+
+$check_session_id = "";
+$check_session_password = "";
+$check_session_name = "";
+$check_session_email = "";
+$check_session_phone = "";
+$check_session_job = "";
+$check_session_address = "";
+
+if (isset ( $_SESSION ['id'] )) {
+	$check_session_id = $_SESSION ['id'];
+	$check_session_password = $_SESSION ['password'];
+	$check_session_name = $_SESSION['name'];
+	$check_session_email = $_SESSION['email'];
+	$check_session_phone = $_SESSION['phone'];
+	$check_session_job = $_SESSION['job'];
+	$check_session_address = $_SESSION['address'];
+	$sql = "SELECT * FROM customer WHERE c_password='" . $check_session_password . " and c_id=" . $check_session_id . "'";
+	$result = $conn->query ( $sql );
+	$row = $result->fetch_assoc ();
+}
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-
-<!-- jQuery -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Fav and touch icons -->
@@ -18,10 +43,13 @@
 <link rel="apple-touch-icon-precomposed"
 	href="ico/apple-touch-icon-57-precomposed.png">
 <link rel="shortcut icon" href="assets/ico/favicon.png">
-<title>TSHOP - Bootstrap E-Commerce Parallax Theme</title>
-
+<title>Camera Rental Shop</title>
 <!-- Bootstrap core CSS -->
 <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+<!-- styles needed by swiper slider -->
+<link href="assets/plugins/swiper-master/css/swiper.min.css"
+	rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="assets/css/style.css" rel="stylesheet">
@@ -35,77 +63,15 @@
 
 <!-- include pace script for automatic web page progress bar  -->
 
-
 <script>
         paceOptions = {
             elements: true
         };
     </script>
-
 <script src="assets/js/pace.min.js"></script>
 </head>
 
 <body>
-
-
-<!-- Modal Login start -->
-	<div class="modal signUpContent fade" id="ModalLogin" tabindex="-1"
-		role="dialog">
-		<div class="modal-dialog ">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h3 class="modal-title-site text-center">Login to TSHOP</h3>
-				</div>
-				<form action="login.php"  method="post" >
-					<div class="modal-body">
-						<div class="form-group login-username">
-							<div>
-								<input name="userId" id="userId" class="form-control input"
-									size="20" placeholder="Enter UserId" type="text">
-							</div>
-						</div>
-						<div class="form-group login-password">
-							<div>
-								<input name="userPassword" id="userPassword"
-									class="form-control input" size="20" placeholder="Password"
-									type="password">
-							</div>
-						</div>
-						<div class="form-group">
-							<div>
-								<div class="checkbox login-remember">
-									<label> <input name="rememberme" value="forever"
-										checked="checked" type="checkbox"> Remember Me
-									</label>
-								</div>
-							</div>
-						</div>
-						<div>
-							<div>
-								<input name="submit" class="btn  btn-block btn-lg btn-primary"
-									value="LOGIN" type="submit">
-							</div>
-						</div>
-					</div>
-					<!--userForm-->
-				</form>
-				<div class="modal-footer">
-					<p class="text-center">
-						Not here before? <a href="register_form.php"> Register </a> <br> <a
-							href="forgot-password.html"> Lost your password? </a>
-					</p>
-				</div>
-			</div>
-			<!-- /.modal-content -->
-
-		</div>
-		<!-- /.modal-dialog -->
-
-	</div>
-	<!-- /.Modal Login -->
-
 
 
 	<!-- Fixed navbar start -->
@@ -117,7 +83,7 @@
 					<div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
 						<div class="pull-left ">
 							<ul class="userMenu ">
-								<li><a href="#"> <span class="hidden-xs">HELP</span><i
+								<li><a href="#"> <span class="hidden-xs">HELP ME</span><i
 										class="glyphicon glyphicon-info-sign hide visible-xs "></i>
 								</a></li>
 								<li class="phone-number"><a href="callto:+12025550151"> <span> <i
@@ -127,19 +93,22 @@
 							</ul>
 						</div>
 					</div>
-					<div
-						class="col-lg-6 col-sm-6 col-xs-6 col-md-6 no-margin no-padding">
+					<div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 no-margin no-padding">
 						<div class="pull-right">
 							<ul class="userMenu">
-
-								<li><a href="#" data-toggle="modal" data-target="#ModalLogin"> <span
-										class="hidden-xs">Sign In</span> <i
-										class="glyphicon glyphicon-log-in hide visible-xs "></i>
-								</a></li>
-
-								<li><a href="register_form.php"><span class="hidden-xs">
-											Register</span> <i
-										class="glyphicon glyphicon-user hide visible-xs "></i></a></li>
+							<?php 
+							if (!isset($_SESSION['id']))//로그인안됨
+							{
+								echo "<li><a href='#' data-toggle='modal' data-target='#ModalLogin'><span
+										class='hidden-xs'>Sign In</span></a></li>
+								<li><a href='register_form.php'><span class='hidden-xs'>
+											Register</span></a></li>";
+							}
+							else{
+								echo "<li><a href='user_info.php'><span class='hidden-xs'>$check_session_name 님</span></a></li><li><a href='logout.php'><span class='hidden-xs'>
+											logout</span></a></li>";
+							}
+							?>
 							</ul>
 						</div>
 					</div>
@@ -147,7 +116,6 @@
 			</div>
 		</div>
 		<!--/.navbar-top-->
-
 
 		<div class="container">
 			<div class="navbar-header">
@@ -581,7 +549,6 @@
 				<!--/.navbar-nav hidden-xs-->
 			</div>
 			<!--/.nav-collapse -->
-
 		</div>
 		<!--/.container -->
 
@@ -602,42 +569,27 @@
 
 	</div>
 	<!-- /.Fixed navbar  -->
-	
 
-	<script>
+
+<script>
 
 $(document).ready(function(){
-
-	// id 중복 체크
-	$("#userId").keyup(function(){
-		$("#idcheckViews").html("");
-		$.ajax({
-			type:"post",
-			url:"idCheck.php",
-			data:"userId="+$("#userId").val().trim(),
-			success:function(data){
-				//alert(data);					
-				if(data==true){
-					$("#idcheckViews").html("아이디 사용가능");
-					$("#idCheckResults").val($("#userId").val());
-				} else{
-					$("#idcheckViews").html("이미 사용중인 아이디입니다.");
-					$("#idCheckResults").val("");
-				}
-			}
-		});
-	});
-
 	
-	$("#registerForm").submit(function(){
 
-		if($("#idCheckResults").val()==""){
-			alert("사용할 수 없는 아이디입니다!");
-			return false;
-		} 
+	alert("Dd");
+	
+	$("#updateForm2").submit(function(){
+
+		alert("세션 패스워드: "+<?php $check_session_password ?>+"올드패스워드: "+$("#user_oldPassword").val());
+		return false;
 		
-		else if($("#userPassword").val() != $("#userPasswordCheck").val()){
-			alert("비밀번호가 일치하지 않습니다!");
+		if(<?php $check_session_password ?> != $("#user_oldPassword").val()){
+			alert("기존 비밀번호가 일치하지 않습니다!");
+			return false;
+			}
+		
+		 if($("#newPassword").val() != $("#newPasswordCheck").val()){
+			alert("새로운 비밀번호가 일치하지 않습니다!");
 			return false;
 			}
 	});
@@ -645,293 +597,247 @@ $(document).ready(function(){
 });
 
 
-
 </script>
 
 
-	<div class="container main-container headerOffset">
+<div class="container main-container headerOffset">
+    <div class="row">
+        <div class="breadcrumbDiv col-lg-12">
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="account.html">My Account</a></li>
+                <li class="active"> My information</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-7">
+            <h1 class="section-title-inner"><span><i
+                    class="glyphicon glyphicon-user"></i> My personal information </span></h1>
 
-		<div class="row">
-			<div class="breadcrumbDiv col-lg-12">
-				<ul class="breadcrumb">
-					<li><a href="index.html">Home</a></li>
-					<li class="active">Register</li>
-				</ul>
-			</div>
-		</div>
+            <div class="row userInfo">
+                <div class="col-lg-12">
+                    <h2 class="block-title-2"> Please be sure to update your personal information if it has
+                        changed. </h2>
 
-		<div class="row">
+                    <p class="required"><sup>*</sup> Required field</p>
+                </div>
+                
+                <form role="form" class="updateForm" action="user_update.php"
+						method="post" id="updateForm2">
+						
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group required">
+                            <label for="InputName"> Name <sup>*</sup> </label>
+                            <input required type="text" class="form-control" name="userName"  id="user_name" value="<?php echo $check_session_name ?>">
+                        </div>
+                        <div class="form-group required">
+                            <label for="Inputphone">Phone <sup>*</sup> </label>
+                            <input required type="tel" class="form-control" name="userPhone" id="user_phone" value="<?php echo $check_session_phone ?>">
+                        </div>
+                        <div class="form-group required">
+                            <label for="InputEmail"> Email </label>
+                            <input required type="email" class="form-control" name="userEmail" id="user_email" value="<?php echo $check_session_email ?>">
+                        </div>
+                        <div class="form-group required">
+                            <label for="Inputjob"> Job </label>
+                            <input type="text" class="form-control" name="userJob" id="user_job" value="<?php echo $check_session_job ?>">
+                        </div>
+                       
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                    	<div class="form-group">
+                            <label for="InputAddress"> Address </label>
+                            <input type="text" value=<?php echo $check_session_address ?> name="userAddress" class="form-control"
+                                   id="user_address">
+                        </div>
+                        <div class="form-group required">
+                            <label for="InputPasswordCurrent"> Password <sup> * </sup> </label>
+                            <input type="password" name="oldPassword" class="form-control"
+                                   id="user_oldPassword" required>
+                        </div>
+                        <div class="form-group required">
+                            <label for="InputPasswordnew"> New Password </label>
+                            <input type="password" name="userPassword" class="form-control" id="newPassword" required>
+                        </div>
+                        <div class="form-group required">
+                            <label for="InputPasswordnewConfirm"> Confirm Password </label>
+                            <input type="password" name="userPasswordCheck" class="form-control"
+                                   id="newPasswordCheck" required>
+                        </div>
+                    </div>
+                  
+                    <div class="col-lg-12">
+                        <input type="submit" class="btn btn-primary" value="Save">
+                    </div>
+                </form>
+                
+                <div class="col-lg-12 clearfix">
+                    <ul class="pager">
+                        <li class="previous pull-right"><a href="index.php"> <i class="fa fa-home"></i> Go to Shop </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--/row end-->
 
-			<div class="col-lg-9 col-md-9 col-sm-7">
-				<h1 class="section-title-inner">
-					<span><i class="glyphicon glyphicon-user"></i>&nbsp Register</span>
-				</h1>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-5"></div>
+    </div>
+    <!--/row-->
 
-				<div class="row userInfo">
+    <div style="clear:both"></div>
+</div>
+<!-- /main-container -->
 
-					<!-- 회원가입 폼 -->
-					<form role="form" class="registerForm" action="register.php"
-						method="post" id="registerForm">
+<div class="gap"></div>
+<footer>
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3  col-md-3 col-sm-4 col-xs-6">
+                    <h3> Support </h3>
+                    <ul>
+                        <li class="supportLi">
+                            <p> Lorem ipsum dolor sit amet, consectetur </p>
+                            <h4><a class="inline" href="callto:+12025550151"> <strong> <i class="fa fa-phone"> </i> +1-202-555-0151 </strong> </a></h4>
+                            <h4><a class="inline" href="mailto:help@yourweb.com"> <i class="fa fa-envelope-o"> </i>
+                                help@yourweb.com </a></h4>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                    <h3> Shop </h3>
+                    <ul>
+                        <li><a href="#">
+                            Men's
+                        </a></li>
+                        <li><a href="#">
+                            Women's</a></li>
+                        <li><a href="#">
+                            Kids'
+                        </a></li>
+                        <li><a href="#">Shoes
+                        </a></li>
+                        <li><a href="#">
+                            Gift Cards
+                        </a></li>
 
-						<div class="col-xs-12 col-sm-6">
-							<h2 class="block-title-2">Create new account</h2>
-							<div class="form-group">
-								<label>Name</label> <input id="userName" name="userName"
-									type="text" class="form-control" placeholder="Enter name"
-									required minlength="3">
-							</div>
-							<div class="form-group">
-								<label>Id</label> <input id="userId" name="userId" type="text"
-									class="form-control" placeholder="Enter Id" required>
-							</div>
-							<!-- ajax 로 처리 -->
-							<div class="form-group">
-								<input type="hidden" id="idCheckResults" value=""><span
-									id="idcheckViews"></span>
-							</div>
-							<div class="form-group">
-								<label>Password</label> <input required minlength="4"
-									id="userPassword" name="userPassword" type="password"
-									class="form-control" placeholder="Password" required>
-							</div>
-							<div class="form-group">
-								<label>Password Check</label> <input required minlength="4"
-									id="userPasswordCheck" name="userPasswordCheck" type="password"
-									class="form-control" placeholder="Password" required>
-							</div>
-						</div>
+                    </ul>
 
-						<div class="col-xs-12 col-sm-6">
-							<h2 class="block-title-2">
-								<span>&nbsp</span>
-							</h2>
-							<div class="form-group">
-								<label>Email address</label> <input id="userEmail"
-									name="userEmail" type="email" class="form-control"
-									placeholder="Enter email" required>
-							</div>
-							<div class="form-group">
-								<label>Phone</label> <input id="userPhone" name="userPhone"
-									type="tel" class="form-control" placeholder="Enter phone"
-									required>
-							</div>
-							<div class="form-group">
-								<label>Job</label> <input id="userJob" name="userJob"
-									type="text" class="form-control" placeholder="Enter job"
-									required>
-							</div>
-							<div class="form-group">
-								<label>Address</label> <input id="userAddress"
-									name="userAddress" type="text" class="form-control"
-									placeholder="Enter address(not necessary)">
-							</div>
-							<div class="form-group">
-								<p>
-									<a href="forgot-password.html">Forgot your password? </a>
-								</p>
-							</div>
-							<div class="error"></div>
+                </div>
 
-							<input type="submit" class="btn btn-primary"
-								value="Create an account">
-						</div>
+                <div style="clear:both" class="hide visible-xs"></div>
 
-					</form>
-					<!-- 회원가입 폼 -->
-				</div>
-				<!--/row end-->
+                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                    <h3> Information </h3>
+                    <ul class="list-unstyled footer-nav">
+                        <li><a href="#">Questions?
+                        </a></li>
 
-			</div>
+                        <li><a href="#"> Order Status
+                        </a></li>
+                        <li><a href="#"> Sizing Charts
+                        </a></li>
+                        <li><a href="#"> Return Policy </a></li>
+                        <li><a href="#">
+                            Contact Us
+                        </a></li>
 
-			<div class="col-lg-3 col-md-3 col-sm-5"></div>
-		</div>
-		<!--/row-->
+                    </ul>
+                </div>
+                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                    <h3> My Account </h3>
+                    <ul>
+                        <li><a href="account.html"> My Account </a></li>
+                        <li><a href="my-address.html"> My Address </a></li>
+                        <li><a href="wishlist.html"> Wish List </a></li>
+                        <li><a href="order-list.html"> Order list </a></li>
+                        <li><a href="order-status.html"> Order Status </a></li>
+                    </ul>
+                </div>
 
-		<div style="clear: both"></div>
-	</div>
-	<!-- /wrapper -->
+                <div style="clear:both" class="hide visible-xs"></div>
 
-	<div class="gap"></div>
+                <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
+                    <h3> Stay in touch </h3>
+                    <ul>
+                        <li>
+                            <div class="input-append newsLatterBox text-center">
+                                <input type="text" class="full text-center" placeholder="Email ">
+                                <button class="btn  bg-gray" type="button"> Subscribe <i
+                                        class="fa fa-long-arrow-right"> </i></button>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="social">
+                        <li><a href="http://facebook.com"> <i class=" fa fa-facebook"> &nbsp; </i> </a></li>
+                        <li><a href="http://twitter.com"> <i class="fa fa-twitter"> &nbsp; </i> </a></li>
+                        <li><a href="https://plus.google.com"> <i class="fa fa-google-plus"> &nbsp; </i> </a></li>
+                        <li><a href="http://youtube.com"> <i class="fa fa-pinterest"> &nbsp; </i> </a></li>
+                        <li><a href="http://youtube.com"> <i class="fa fa-youtube"> &nbsp; </i> </a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--/.row-->
+        </div>
+        <!--/.container-->
+    </div>
+    <!--/.footer-->
 
+    <div class="footer-bottom">
+        <div class="container">
+            <p class="pull-left"> &copy; TSHOP 2014. All right reserved. </p>
 
-	<footer>
-		<div class="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-3  col-md-3 col-sm-4 col-xs-6">
-						<h3>Support</h3>
-						<ul>
-							<li class="supportLi">
-								<p>Lorem ipsum dolor sit amet, consectetur</p>
-								<h4>
-									<a class="inline" href="callto:+12025550151"> <strong> <i
-											class="fa fa-phone"> </i> +1-202-555-0151
-									</strong>
-									</a>
-								</h4>
-								<h4>
-									<a class="inline" href="mailto:help@yourweb.com"> <i
-										class="fa fa-envelope-o"> </i> help@yourweb.com
-									</a>
-								</h4>
-							</li>
-						</ul>
-					</div>
-					<div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-						<h3>Shop</h3>
-						<ul>
-							<li><a href="#"> Men's </a></li>
-							<li><a href="#"> Women's</a></li>
-							<li><a href="#"> Kids' </a></li>
-							<li><a href="#">Shoes </a></li>
-							<li><a href="#"> Gift Cards </a></li>
+            <div class="pull-right paymentMethodImg"><img height="30" class="pull-right"
+                                                          src="images/site/payment/master_card.png" alt="img"> <img
+                    height="30" class="pull-right" src="images/site/payment/visa_card.png" alt="img"><img height="30"
+                                                                                                          class="pull-right"
+                                                                                                          src="images/site/payment/paypal.png"
+                                                                                                          alt="img">
+                <img height="30" class="pull-right" src="images/site/payment/american_express_card.png" alt="img"> <img
+                        height="30" class="pull-right" src="images/site/payment/discover_network_card.png" alt="img">
+                <img height="30" class="pull-right" src="images/site/payment/google_wallet.png" alt="img">
 
-						</ul>
-					</div>
+            </div>
+        </div>
+    </div>
+    <!--/.footer-bottom-->
+</footer>
 
-					<div style="clear: both" class="hide visible-xs"></div>
-
-					<div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-						<h3>Information</h3>
-						<ul class="list-unstyled footer-nav">
-							<li><a href="#">Questions? </a></li>
-
-							<li><a href="#"> Order Status </a></li>
-							<li><a href="#"> Sizing Charts </a></li>
-							<li><a href="#"> Return Policy </a></li>
-							<li><a href="#"> Contact Us </a></li>
-
-						</ul>
-					</div>
-					<div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-						<h3>My Account</h3>
-						<ul>
-							<li><a href="account.html"> My Account </a></li>
-							<li><a href="my-address.html"> My Address </a></li>
-							<li><a href="wishlist.html"> Wish List </a></li>
-							<li><a href="order-list.html"> Order list </a></li>
-							<li><a href="order-status.html"> Order Status </a></li>
-						</ul>
-					</div>
-
-					<div style="clear: both" class="hide visible-xs"></div>
-
-					<div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
-						<h3>Stay in touch</h3>
-						<ul>
-							<li>
-								<div class="input-append newsLatterBox text-center">
-									<input type="text" class="full text-center"
-										placeholder="Email ">
-									<button class="btn  bg-gray" type="button">
-										Subscribe <i class="fa fa-long-arrow-right"> </i>
-									</button>
-								</div>
-							</li>
-						</ul>
-						<ul class="social">
-							<li><a href="http://facebook.com"> <i class=" fa fa-facebook">
-										&nbsp; </i>
-							</a></li>
-							<li><a href="http://twitter.com"> <i class="fa fa-twitter">
-										&nbsp; </i>
-							</a></li>
-							<li><a href="https://plus.google.com"> <i
-									class="fa fa-google-plus"> &nbsp; </i>
-							</a></li>
-							<li><a href="http://youtube.com"> <i class="fa fa-pinterest">
-										&nbsp; </i>
-							</a></li>
-							<li><a href="http://youtube.com"> <i class="fa fa-youtube">
-										&nbsp; </i>
-							</a></li>
-						</ul>
-					</div>
-				</div>
-				<!--/.row-->
-			</div>
-			<!--/.container-->
-		</div>
-		<!--/.footer-->
-
-		<div class="footer-bottom">
-			<div class="container">
-				<p class="pull-left">&copy; TSHOP 2014. All right reserved.</p>
-
-				<div class="pull-right paymentMethodImg">
-					<img height="30" class="pull-right"
-						src="images/site/payment/master_card.png" alt="img"> <img
-						height="30" class="pull-right"
-						src="images/site/payment/visa_card.png" alt="img"><img height="30"
-						class="pull-right" src="images/site/payment/paypal.png" alt="img">
-					<img height="30" class="pull-right"
-						src="images/site/payment/american_express_card.png" alt="img"> <img
-						height="30" class="pull-right"
-						src="images/site/payment/discover_network_card.png" alt="img"> <img
-						height="30" class="pull-right"
-						src="images/site/payment/google_wallet.png" alt="img">
-
-				</div>
-			</div>
-		</div>
-		<!--/.footer-bottom-->
-	</footer>
-
-	<!-- Le javascript
+<!-- Le javascript
 ================================================== -->
 
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
 </script>
-	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-	<!-- include  parallax plugin -->
-	<script type="text/javascript" src="assets/js/jquery.parallax-1.1.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- include  parallax plugin -->
+<script type="text/javascript" src="assets/js/jquery.parallax-1.1.js"></script>
 
-	<!-- optionally include helper plugins -->
-	<script type="text/javascript"
-		src="assets/js/helper-plugins/jquery.mousewheel.min.js"></script>
+<!-- optionally include helper plugins -->
+<script type="text/javascript" src="assets/js/helper-plugins/jquery.mousewheel.min.js"></script>
 
-	<!-- include mCustomScrollbar plugin //Custom Scrollbar  -->
+<!-- include mCustomScrollbar plugin //Custom Scrollbar  -->
 
-	<script type="text/javascript"
-		src="assets/js/jquery.mCustomScrollbar.js"></script>
+<script type="text/javascript" src="assets/js/jquery.mCustomScrollbar.js"></script>
 
-	<!-- include icheck plugin // customized checkboxes and radio buttons   -->
-	<script type="text/javascript"
-		src="assets/plugins/icheck-1.x/icheck.min.js"></script>
+<!-- include icheck plugin // customized checkboxes and radio buttons   -->
+<script type="text/javascript" src="assets/plugins/icheck-1.x/icheck.min.js"></script>
 
-	<!-- include grid.js // for equal Div height  -->
-	<script src="assets/js/grids.js"></script>
+<!-- include grid.js // for equal Div height  -->
+<script src="assets/js/grids.js"></script>
 
-	<!-- include carousel slider plugin  -->
-	<script src="assets/js/owl.carousel.min.js"></script>
+<!-- include carousel slider plugin  -->
+<script src="assets/js/owl.carousel.min.js"></script>
 
-	<!-- jQuery select2 // custom select   -->
-	<script
-		src="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+<!-- jQuery select2 // custom select   -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 
-	<!-- include touchspin.js // touch friendly input spinner component   -->
-	<script src="assets/js/bootstrap.touchspin.js"></script>
+<!-- include touchspin.js // touch friendly input spinner component   -->
+<script src="assets/js/bootstrap.touchspin.js"></script>
 
-	<!-- include validate.js // jquery plugin   -->
-	<script src="assets/js/jquery.validate.js"></script>
-
-	<script>
-    $().ready(function () {
-        // validate the comment form when it is submitted
-        $("#regForm").validate();
-
-        // validate signup form on keyup and submit
-        $(".regForm").validate({
-            errorLabelContainer: $(".regForm div.error")
-        });
-    });
-</script>
-
-
-	<!-- include custom script for site  -->
-	<script src="assets/js/script.js"></script>
+<!-- include custom script for site  -->
+<script src="assets/js/script.js"></script>
 </body>
 </html>
-

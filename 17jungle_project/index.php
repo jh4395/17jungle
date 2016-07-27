@@ -156,7 +156,7 @@ if (isset ( $_SESSION ['id'] )) {
 											Register</span></a></li>";
 							}
 							else{
-								echo "<li><a href='#'><span class='hidden-xs'>$check_session_name 님</span></a></li><li><a href='logout.php'><span class='hidden-xs'>
+								echo "<li><a href='user_info.php'><span class='hidden-xs'>$check_session_name 님</span></a></li><li><a href='logout.php'><span class='hidden-xs'>
 											logout</span></a></li>";
 							}
 							?>
