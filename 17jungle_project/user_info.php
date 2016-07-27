@@ -31,6 +31,11 @@ if (isset ( $_SESSION ['id'] )) {
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+
+<!-- jQuery -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Fav and touch icons -->
@@ -569,24 +574,15 @@ if (isset ( $_SESSION ['id'] )) {
 
 	</div>
 	<!-- /.Fixed navbar  -->
-
-
+	
+	
 <script>
 
 $(document).ready(function(){
-	
 
-	alert("Dd");
-	
+	//alert("아 멍청아");
+
 	$("#updateForm2").submit(function(){
-
-		alert("세션 패스워드: "+<?php $check_session_password ?>+"올드패스워드: "+$("#user_oldPassword").val());
-		return false;
-		
-		if(<?php $check_session_password ?> != $("#user_oldPassword").val()){
-			alert("기존 비밀번호가 일치하지 않습니다!");
-			return false;
-			}
 		
 		 if($("#newPassword").val() != $("#newPasswordCheck").val()){
 			alert("새로운 비밀번호가 일치하지 않습니다!");
@@ -594,10 +590,11 @@ $(document).ready(function(){
 			}
 	});
 	
+	
 });
 
-
 </script>
+
 
 
 <div class="container main-container headerOffset">
@@ -656,20 +653,21 @@ $(document).ready(function(){
                             <input type="password" name="oldPassword" class="form-control"
                                    id="user_oldPassword" required>
                         </div>
-                        <div class="form-group required">
+                        <div class="form-group">
                             <label for="InputPasswordnew"> New Password </label>
-                            <input type="password" name="userPassword" class="form-control" id="newPassword" required>
+                            <input type="password" name="userPassword" class="form-control" id="newPassword" placeholder="바꿀경우만 입력하세요.">
                         </div>
-                        <div class="form-group required">
-                            <label for="InputPasswordnewConfirm"> Confirm Password </label>
+                        <div class="form-group">
+                            <label for="InputPasswordnewConfirm"> Check Password </label>
                             <input type="password" name="userPasswordCheck" class="form-control"
-                                   id="newPasswordCheck" required>
+                                   id="newPasswordCheck">
                         </div>
                     </div>
                   
                     <div class="col-lg-12">
                         <input type="submit" class="btn btn-primary" value="Save">
                     </div>
+                    
                 </form>
                 
                 <div class="col-lg-12 clearfix">

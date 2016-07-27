@@ -15,6 +15,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     	$check_session_password = $_SESSION ['password'];
     }
 	
+    $oldpassword = $_POST["oldPassword"];
 	$password = $_POST["userPassword"];
 	$name= $_POST["userName"];
 	$email = $_POST["userEmail"];
@@ -22,7 +23,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$job = $_POST["userJob"];
 	$address = $_POST["userAddress"];
 	
- 	$sql = "update customer set c_password='$password',c_name='$name', c_phone='$phone', c_email='$email', c_job='$job',c_address='$address' where c_id='$check_session_id' and c_password='$check_session_password'";	
+	if($oldpassword != $check_session_password){
+		echo ("<script>alert('기존 비밀번호가 일치하지 않습니다!');location.href='user_info.php';</script>");
+	}
+	
+	if($password!=null){
+		$sql = "update customer set c_password='$password',c_name='$name', c_phone='$phone', c_email='$email', c_job='$job',c_address='$address' where c_id='$check_session_id' and c_password='$oldpassword'";
+	}
+ 	else if($password==null){
+ 		$sql = "update customer set c_password='$oldpassword',c_name='$name', c_phone='$phone', c_email='$email', c_job='$job',c_address='$address' where c_id='$check_session_id' and c_password='$oldpassword'";
+	}
 	
 	if($conn->query($sql)===TRUE){
 		echo ("<script>alert('수정이 완료되었습니다.');location.href='index.php';</script>");
