@@ -148,6 +148,7 @@ if (isset ( $_SESSION ['id'] )) {
 						<div class="pull-right">
 							<ul class="userMenu">
 							<?php 
+							
 							if (!isset($_SESSION['id']))//로그인안됨
 							{
 								echo "<li><a href='#' data-toggle='modal' data-target='#ModalLogin'><span

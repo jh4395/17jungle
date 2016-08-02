@@ -33,7 +33,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			}
 		
 		}		
-		//session_start();
+		session_start();
 		$_SESSION['id'] = $id;
 		$_SESSION['password'] = $password;
 		$_SESSION['name'] = $name;		
