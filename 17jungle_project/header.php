@@ -1,5 +1,4 @@
 <?php
-session_start();
 $conn = new mysqli ( "localhost", "17jungle", "playjungle", "jh_17jungle" );
 
 if ($conn->connect_error) {
@@ -9,11 +8,21 @@ if ($conn->connect_error) {
 $check_session_id = "";
 $check_session_password = "";
 $check_session_name = "";
+$check_session_email = "";
+$check_session_phone = "";
+$check_session_job = "";
+$check_session_address = "";
+
 
 if (isset ( $_SESSION ['id'] )) {
 	$check_session_id = $_SESSION ['id'];
 	$check_session_password = $_SESSION ['password'];
 	$check_session_name = $_SESSION['name'];
+	$check_session_email = $_SESSION['email'];
+	$check_session_phone = $_SESSION['phone'];
+	$check_session_job = $_SESSION['job'];
+	$check_session_address = $_SESSION['address'];
+	
 	$sql = "SELECT * FROM customer WHERE c_password='" . $check_session_password . " and c_id=" . $check_session_id . "'";
 	$result = $conn->query ( $sql );
 	$row = $result->fetch_assoc ();
@@ -53,7 +62,7 @@ if (isset ( $_SESSION ['id'] )) {
 
     
   <!-- gall-item Gallery for gallery page -->
-    <link href="assets/plugins/magnific/magnific-popup.css" rel="stylesheet">
+  <link href="assets/plugins/magnific/magnific-popup.css" rel="stylesheet">
 
 <!-- Just for debugging purposes. -->
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -64,6 +73,10 @@ if (isset ( $_SESSION ['id'] )) {
 
 <!-- include pace script for automatic web page progress bar  -->
 
+<!-- jQuery -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 <script>
         paceOptions = {
             elements: true
@@ -71,6 +84,7 @@ if (isset ( $_SESSION ['id'] )) {
     </script>
 <script src="assets/js/pace.min.js"></script>
 </head>
+
 
 <body>
 
@@ -141,7 +155,7 @@ if (isset ( $_SESSION ['id'] )) {
 				<div class="row">
 					<div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
 						<div class="pull-left ">
-							<ul class="userMenu ">
+							<ul class="userMenu">
 								<li><a href="#"> <span class="hidden-xs">HELP ME</span><i
 										class="glyphicon glyphicon-info-sign hide visible-xs "></i>
 								</a></li>
@@ -155,18 +169,20 @@ if (isset ( $_SESSION ['id'] )) {
 					<div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 no-margin no-padding">
 						<div class="pull-right">
 							<ul class="userMenu">
-							<?php 
+						<?php 
 							
 							if (!isset($_SESSION['id']))//로그인안됨
 							{
 								echo "<li><a href='#' data-toggle='modal' data-target='#ModalLogin'><span
-										class='hidden-xs'>Sign In</span></a></li>
+										class='hidden-xs'>Sign In</span><i class='glyphicon glyphicon-log-in hide visible-xs'></i></a></li>
 								<li><a href='register_form.php'><span class='hidden-xs'>
-											Register</span></a></li>";
+											Register</span><i class='glyphicon glyphicon-user hide visible-xs'></i></a></li>";
 							}
 							else{
-								echo "<li><a href='user_info.php'><span class='hidden-xs'>$check_session_name 님</span></a></li><li><a href='logout.php'><span class='hidden-xs'>
-											logout</span></a></li>";
+								echo "<li><a href='user_info.php'><span class='hidden-xs'>$check_session_name 님</span>
+								<i class='glyphicon glyphicon-user hide visible-xs'></i></a></li>
+								<li><a href='logout.php'><span class='hidden-xs'>
+											logout</span><i class='glyphicon glyphicon-log-out hide visible-xs'></i></a></li>";
 							}
 							?>
 							</ul>
@@ -180,7 +196,7 @@ if (isset ( $_SESSION ['id'] )) {
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
+					data-target="#totalMenu">
 					<span class="sr-only"> Toggle navigation </span> <span
 						class="icon-bar"> </span> <span class="icon-bar"> </span> <span
 						class="icon-bar"> </span>
@@ -188,7 +204,7 @@ if (isset ( $_SESSION ['id'] )) {
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
 					data-target=".navbar-cart">
 					<i class="fa fa-shopping-cart colorWhite"> </i> <span
-						class="cartRespons colorWhite"> Package </span>
+						class="cartRespons colorWhite">Package </span>
 				</button>
 				<a class="navbar-brand " href="index.php"> <img
 					src="images/logo.png" alt="TSHOP">
@@ -375,7 +391,7 @@ if (isset ( $_SESSION ['id'] )) {
 			</div>
 			<!--/.navbar-cart-->
 
-			<div class="navbar-collapse collapse">
+			<div class="navbar-collapse collapse" id="totalMenu">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="index.php"> home </a></li>
 					<!-- 상품리스트 화면으로 넘어가기 -->
@@ -424,7 +440,8 @@ if (isset ( $_SESSION ['id'] )) {
 				<div class="nav navbar-nav navbar-right hidden-xs">
 					<div class="dropdown  cartMenu ">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i
-							class="fa fa-shopping-cart"> </i> <span class="cartRespons"> Package</span> <b class="caret"> </b>
+							class="fa fa-shopping-cart"> </i> <span class="cartRespons"> Package
+							 </span> <b class="caret"> </b>
 						</a>
 
 						<div class="dropdown-menu col-lg-4 col-xs-12 col-md-4 ">

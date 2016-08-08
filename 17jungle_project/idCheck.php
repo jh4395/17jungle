@@ -1,5 +1,7 @@
 	<?php
+	
 if($_SERVER["REQUEST_METHOD"] == "POST") {
+	
     $conn =  new mysqli("localhost","17jungle", "playjungle","jh_17jungle");		
     
     $id = $_POST["userId"];

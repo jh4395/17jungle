@@ -10,13 +10,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     	die("Connection failed: ".$conn->connect_error);
     }
 	
-    $id = $_POST["userId"];
-	$password = $_POST["userPassword"];
-	$name= $_POST["userName"];
-	$email = $_POST["userEmail"];
-	$phone = $_POST["userPhone"];
-	$job = $_POST["userJob"];
-	$address = $_POST["userAddress"];
+    $id = $_POST["newuserId"];
+	$password = $_POST["newuserPassword"];
+	$name= $_POST["newuserName"];
+	$email = $_POST["newuserEmail"];
+	$phone = $_POST["newuserPhone"];
+	$job = $_POST["newuserJob"];
+	$address = $_POST["newuserAddress"];
 	
 	$sql ="insert into customer (c_id,c_password,c_name,c_phone,c_email,c_job,c_address) values('$id','$password','$name','$phone','$email','$job','$address')";
  	

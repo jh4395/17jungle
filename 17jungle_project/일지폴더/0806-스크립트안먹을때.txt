@@ -1,0 +1,8 @@
+- 스크립트 부분이 왜 안먹나?
+ready는 먹는데 키업에서
+
+register_form.php에서
+
+=> $("#userId").keyup(function(){
+=>아이디가 userId를 참조하는 놈은 맨앞에있는놈을 참조한다.
+header를 인클루드했는데 header에 아이디가 똑같은 놈이있었는데 그놈을 참조하고 있었던것.

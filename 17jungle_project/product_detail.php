@@ -226,7 +226,7 @@
                         <div class="rating commentRating">
                             <p><span><i class="fa fa-star"></i></span> <span><i class="fa fa-star"></i></span> <span><i
                                     class="fa fa-star"></i></span>
-                                <span><i class="fa fa-star"></i></span> <span> <i class="fa fa-star-o "></i> </span>
+                                <span><i class="fa fa-star"></i></span> <span> <i class="fa fa-star-half-o "></i> </span>
 
 
                     <span class="ratingInfo">
