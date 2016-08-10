@@ -53,6 +53,7 @@ if (isset ( $_SESSION ['id'] )) {
 <!-- Bootstrap core CSS -->
 <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
 
+
 <!-- styles needed by swiper slider -->
 <link href="assets/plugins/swiper-master/css/swiper.min.css"
 	rel="stylesheet">
@@ -74,9 +75,7 @@ if (isset ( $_SESSION ['id'] )) {
 <!-- include pace script for automatic web page progress bar  -->
 
 <!-- jQuery -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
         paceOptions = {
             elements: true

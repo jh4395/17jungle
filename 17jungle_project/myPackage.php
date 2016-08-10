@@ -32,7 +32,7 @@
 
 							<div style="clear: both"></div>
 
-							<div class="onepage-checkout col-lg-12">
+							<div class="onepage-checkout col-lg-10">
 
 								<div class="panel-group" id="accordion" role="tablist"
 									aria-multiselectable="true">
@@ -54,103 +54,122 @@
 												<div class="col-xs-12 col-sm-12">
 													<table>
 														<tbody>
-
 															<tr class="CartProduct">
-																<td style="width:10%">
-
-																	<h3>p_type(모바일일땐 숨겨야겠음)</h3>
-
-																</td>
-
-																<td style="width:10%" class="CartProductThumb"><a
-																	href="product-detail.php"><img
-																		src="images/17jungle_product/canon70d_1.jpg"></a></td>                      
-
-																<td style="width:20%">
-																	<h4>p_name</h4> <span>50,000(1일기준)</span>
-
-																</td>
-																<td style="width:40%"><textarea class="form-control" rows="3" cols="50">
-																	여기에 제품의 설명/url등을 쓰세요</textarea></td>
-																<td>&nbsp;&nbsp;</td>
+															
+															<td style="width: 10%" class="CartProductThumb">
+															<label> <input type="checkbox" value="">
+																</label>
+															</td>
+												
+																<td style="width: 20%" class="CartProductThumb">
 																
-																<td class="delete" style="width:10%"><a title="Delete"> <i
-																		class="glyphicon glyphicon-trash fa-2x"></i>
-																</a></td>
-																<td>&nbsp;&nbsp;&nbsp;</td>
+																<a href="product_detail.php"><img
+																		src="images/17jungle_product/canon70d_1.jpg"></a>
+																	<h4>캐논eos50</h4> <small>50,000(1일기준)</small>
+																	
+																</td>
 
-																<td style="width:10%"><a title="Update"> <i
-																		class="glyphicon glyphicon-ok fa-2x"></i>
-																</a></td>
+																<td style="width: 50%"><p>제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명
+																</p></td>
+																
+																<td class="delete" style="width: 10%"><a title="Delete">
+																		<i class="glyphicon glyphicon-trash fa-2x"></i>
+																</a>
+																
+																</td>
+
+																<td style="width: 10%">
+																<a
+															href="#" class="glyphicon glyphicon-pencil">수정 </a>
+																</td>
+
 															</tr>
 															
 															<tr class="CartProduct">
-																<td style="width:10%">
-
-																	<h3>p_type</h3>
-
-																</td>
-
-																<td style="width:10%" class="CartProductThumb"><a
-																	href="product-detail.php"><img
-																		src="images/17jungle_product/canon70d_2.jpg"></a></td>                      
-
-																<td style="width:20%">
-																	<h4>p_name</h4> <span>50,000(1일기준)</span>
-
-																</td>
-																<td style="width:40%"><textarea  class="form-control" rows="3" cols="50">
-																	싱가폴여행갈때 사진찍었는데 최고</textarea></td>
-																<td>&nbsp;&nbsp;</td>
+															
+															<td style="width: 10%" class="CartProductThumb">
+															<label> <input type="checkbox" value="">
+																</label>
+															</td>
+												
+																<td style="width: 20%" class="CartProductThumb">
 																
-																<td class="delete" style="width:10%"><a title="Delete"> <i
-																		class="glyphicon glyphicon-trash fa-2x"></i>
-																</a></td>
-																<td>&nbsp;&nbsp;&nbsp;</td>
+																<a href="product_detail.php"><img
+																		src="images/17jungle_product/canon70d_1.jpg"></a>
+																	<h4>캐논eos50</h4> <small>50,000(1일기준)</small>
+																	
+																</td>
 
-																<td style="width:10%"><a title="Update"> <i
-																		class="glyphicon glyphicon-ok fa-2x"></i>
-																</a></td>
+																<td style="width: 50%"><p>제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명
+																</p></td>
+																
+																<td class="delete" style="width: 10%"><a title="Delete">
+																		<i class="glyphicon glyphicon-trash fa-2x"></i>
+																</a>
+																
+																</td>
+
+																<td style="width: 10%">
+																<a
+															href="#" class="glyphicon glyphicon-pencil">수정 </a>
+																</td>
+
 															</tr>
 															
 															<tr class="CartProduct">
-																<td style="width:10%">
-
-																	<h3>p_type</h3>
-
-																</td>
-
-																<td style="width:10%" class="CartProductThumb"><a
-																	href="product-detail.php"><img
-																		src="images/17jungle_product/canon70d_3.jpg"></a></td>                      
-
-																<td style="width:20%">
-																	<h4>p_name</h4> <span>50,000(1일기준)</span>
-
-																</td>
-																<td style="width:40%"><textarea class="form-control" rows="3" cols="50">
-																	뷍주니 애기 돌잔치때 찍을꺼</textarea></td>
-																<td>&nbsp;&nbsp;</td>
+															
+															<td style="width: 10%" class="CartProductThumb">
+															<label> <input type="checkbox" value="">
+																</label>
+															</td>
+												
+																<td style="width: 20%" class="CartProductThumb">
 																
-																<td class="delete" style="width:10%"><a title="Delete"> <i
-																		class="glyphicon glyphicon-trash fa-2x"></i>
-																</a></td>
-																<td>&nbsp;&nbsp;&nbsp;</td>
+																<a href="product_detail.php"><img
+																		src="images/17jungle_product/canon70d_1.jpg"></a>
+																	<h4>캐논eos50</h4> <small>50,000(1일기준)</small>
+																	
+																</td>
 
-																<td style="width:10%"><a title="Update"> <i
-																		class="glyphicon glyphicon-ok fa-2x"></i>
-																</a></td>
+																<td style="width: 50%"><p>제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명
+																</p></td>
+																
+																<td class="delete" style="width: 10%"><a title="Delete">
+																		<i class="glyphicon glyphicon-trash fa-2x"></i>
+																</a>
+																
+																</td>
+
+																<td style="width: 10%">
+																<a
+															href="#" class="glyphicon glyphicon-pencil">수정 </a>
+																</td>
+
 															</tr>
+															
+															
 															
 														</tbody>
 													</table>
 													<div class="gap"></div>
-													<a class="btn btn-primary"> <span class="add2cart"><i
-                                    class="glyphicon glyphicon-trash"></i>delete Package </span> </a>
+
+													<div class="col-lg-12" >
+													
+														<a class="btn btn-primary"> <span class="add2cart"><i
+																class="glyphicon glyphicon-trash"></i>delete All </span></a>
+								
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+															href="product_order.php" class="btn btn-success"> 주문하기</a>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+															href="#" class="btn btn-info"> <span
+															class="glyphicon glyphicon-share-alt">공유하기</span></a>
+													
+													</div>
+													
 													
 												</div>
 
-											</div>
+											</div><!-- 여기에 제품리스트 -->
 										</div>
 									</div>
 									<div class="panel panel-default">
