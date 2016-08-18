@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="inn">
+
+<resultMap type="ivo" id="innResult">
+	<result property="innNo" column="inn_no"/>
+	<result property="innName" column="inn_name"/>
+	<result property="innArea" column="inn_area"/>
+	<result property="innAddress" column="inn_address"/>
+	<result property="innType" column="inn_type"/>
+	<result property="acceptableNo" column="inn_acceptable_no"/>
+	<result property="innPrice" column="inn_price"/>
+	<result property="innInfo" column="inn_info"/>
+	<result property="innAvailability" column="inn_availability"/>
+	<result property="memberId" column="member_id"/>
+	
+</resultMap>
+<resultMap type="bvo" id="bookResult">
+<result property="bookNo" column="book_no"/>
+<result property="bookCheckIn" column="book_checkin"/>
+<result property="bookCheckOut" column="book_checkout"/>
+<result property="bookCount" column="book_count"/>
+<result property="memberId" column="member_id"/>
+<result property="innNo" column="inn_no"/>
+<result property="innName" column="inn_name"/>
+</resultMap>
+<resultMap type="wvo" id="wishListResult">
+<result property="wishListNo" column="wishlist_no"/>
+<result property="memberId" column="member_id"/>
+<result property="innNo" column="inn_no"/>
+<result property="innName" column="inn_name"/>
+</resultMap>
+<resultMap type="irvo" id="reservationResult">
+<result property="memberId" column="member_id"/>
+<result property="master" column="master"/>
+<result property="bookNo" column="book_no"/>
+<result property="innNo" column="inn_no"/>
+<result property="innName" column="inn_name"/>
+<result property="bookCheckIn" column="book_checkin"/>
+<result property="bookCheckOut" column="book_checkout"/>
+<result property="bookCount" column="book_count"/>
+</resultMap>
+<resultMap type="tvo" id="TradeResult">
+<result property="tradeNo" column="Trade_no"/>
+<result property="innName" column="inn_name"/>
+<result property="bookCheckIn" column="book_checkin"/>
+<result property="bookCheckOut" column="book_checkout"/>
+<result property="price" column="inn_price"/>
+<result property="bookNo" column="book_no"/>
+<result property="memberId" column="member_id"/>
+<result property="master" column="master"/>
+<result property="innNo" column="inn_no"/>
+<result property="ratingCheck" column="rating_check"/>
+</resultMap>
+	<sql id="innlist">
+		select inn_no, inn_name, inn_area,inn_address,inn_type,inn_acceptable_no,
+		inn_price,inn_info,inn_availability,member_id from inn
+	</sql>
+	
+	<select id="getmyinnlist" parameterType="hashmap" resultType="ivo" resultMap="innResult">
+select inn_no,inn_name, inn_area,inn_address,inn_type,inn_acceptable_no,
+		inn_price,inn_info,inn_availability,member_id from	
+		(
+ select  inn_no,inn_name, inn_area,inn_address,inn_type,inn_acceptable_no,
+		inn_price,inn_info,inn_availability,member_id,ceil(rownum/5) as page
+ from
+ (
+  select  inn_no,inn_name, inn_area,inn_address,inn_type,inn_acceptable_no,
+		inn_price,inn_info,inn_availability,member_id from inn where member_id=#{member_id}
+		order by inn_no desc	
+ )
+ )   where page=#{pageNo} 
+	</select>
+
+<!-- 페이징빈 위해 테이블 별 totalcount 주형 6/17-->
+	 <select id="getTotalInnCount" resultType="int" parameterType="String">
+ 	select count(*) from inn where member_id=#{value}
+ 	</select> 	 		
+	<select id="getTotalTradeCount" resultType="int" parameterType="String">
+ 	select count(*) from trade where member_id=#{value} or master=#{value}
+ 	</select>
+ 	<select id="getTotalBookCount" resultType="int" parameterType="String">
+ 	select count(*) from book where member_id=#{value}
+ 	</select>
+ 	<select id="getTotalWishlistCount" resultType="int" parameterType="String">
+ 	select count(*) from wishlist where member_id=#{value}
+ 	</select>
+ 	<select id="getTotalInnReservationCount" resultType="int" parameterType="String">
+  select count(*) from(
+ select i.member_id as master from book b, inn i where b.inn_no=i.inn_no
+ ) where master=#{value}
+ 	</select>
+	
+	
+<select  id="getmybooklist" parameterType="hashmap" resultType="bvo" resultMap="bookResult">
+<!-- 체크인 체크아웃 날짜 시간 안나오게 수정함 -->
+<!-- 	 select book_no, book_checkin, book_checkout, book_count, member_id, inn_no, inn_name from(
+ select book_no, book_checkin, book_checkout, book_count, member_id, inn_no, inn_name, page from(
+ select b.book_no, b.book_checkin, b.book_checkout, b.book_count, b.member_id, b.inn_no, i.inn_name, ceil(rownum/5) as page from book b, inn i 
+ where b.inn_no=i.inn_no
+ ) where member_id=#{member_id}
+ ) where page=#{pageNo} 
+  -->
+ select book_no, book_checkin, book_checkout, book_count, member_id, inn_no, inn_name from(
+select book_no, book_checkin, book_checkout, book_count, member_id, inn_no, inn_name,
+ceil(rownum/5) as page from
+(
+ select b.book_no, to_char(b.book_checkin,'YYYY-MM-DD') as book_checkin, to_char(b.book_checkout,'YYYY-MM-DD') 
+ as book_checkout,  b.book_count, b.member_id, b.inn_no, i.inn_name from book b, inn i where b.inn_no=i.inn_no
+ ) 
+ where member_id=#{member_id}
+ ) where page=#{pageNo}
+</select>
+
+<select id="getmytradelist" parameterType="hashmap" resultType="tvo" resultMap="TradeResult">
+  select Trade_no, inn_name, book_checkin, book_checkout, inn_price, member_id,master,inn_no,rating_check from	
+		(
+ select Trade_no, inn_name,to_char(book_checkin,'YYYY-MM-DD') as book_checkin,to_char(book_checkout,'YYYY-MM-DD')
+  as book_checkout, inn_price, member_id,master,inn_no,rating_check,ceil(rownum/5) as page from
+ (
+   select Trade_no,inn_name, book_checkin, book_checkout, inn_price, member_id,master,inn_no,rating_check from trade
+    where member_id=#{member_id} or master=#{member_id} order by Trade_no desc	
+ )
+ )   where page=#{pageNo} 
+	</select>
+
+		<select id="getmywishlist" parameterType="hashmap" resultType="wvo" resultMap="wishListResult">
+	 select inn_no, wishlist_no, member_id, inn_name from(
+select inn_no, wishlist_no, member_id, inn_name,ceil(rownum/5) as page  from(
+ select  inn_no, wishlist_no, member_id, inn_name from(
+ select i.inn_no, w.wishlist_no, w.member_id, i.inn_name from wishlist w, inn i 
+ where i.inn_no=w.inn_no  
+ )
+ )where member_id=#{member_id}
+ )where page=#{pageNo} 
+	</select>
+
+	
+<!-- <insert id="register" parameterType="ivo" > 아 ~~ 줭신!!!!!!! 왜 똑같은거 두개 붙였어!!!!!
+	 <selectKey keyProperty="innNo"  resultType="int"  order="BEFORE">
+       select inn_sequence.nextval from dual
+   </selectKey>
+	insert into INN
+	(inn_no, inn_name, inn_city, inn_area, inn_address, inn_type, inn_acceptable_no, 
+	inn_price, inn_info,inn_availability,member_id) 
+	values(#{innNo},#{innName},#{innCity},#{innArea},#{innAddress},#{innType},
+	#{acceptableNo},#{innPrice},#{innInfo},#{innAvailability},#{memberId})
+	</insert>
+	<select id="select_inn_by_member_id" resultMap="innResult" parameterType="ivo">
+	select inn_no, inn_name, inn_city, inn_area, inn_address, inn_type, inn_acceptable_no, 
+	inn_price, inn_info,inn_availability,member_id from INN where member_id=#{memberId} 
+	</select> -->
+	
+	
+<insert id="register" parameterType="ivo" >
+	 <selectKey keyProperty="innNo"  resultType="int"  order="BEFORE">
+       select inn_sequence.nextval from dual
+   </selectKey>
+	insert into INN
+	(inn_no, inn_name, inn_area, inn_address, inn_type, inn_acceptable_no, 
+	inn_price, inn_info,inn_availability,member_id) 
+	values(#{innNo},#{innName},#{innArea},#{innAddress},#{innType},
+	#{acceptableNo},#{innPrice},#{innInfo},'Y',#{memberId})
+	</insert>
+	<select id="select_inn_by_member_id" resultMap="innResult" parameterType="ivo">
+	select inn_no, inn_name, inn_area, inn_address, inn_type, inn_acceptable_no, 
+	inn_price, inn_info,inn_availability,member_id from INN where member_id=#{memberId} 
+	</select>
+	
+	<select id="getMyInnReservationList" parameterType="hashmap" resultType="irvo" resultMap="reservationResult">
+ select  member_id, inn_no, inn_name, master, book_no, book_checkin, book_checkout, book_count from(
+ select member_id, inn_no, inn_name, master, book_no, book_checkin, book_checkout, book_count, page from(
+ select b.member_id, b.inn_no, i.inn_name, i.member_id as master, b.book_no, to_char(b.book_checkin,'YYYY-MM-DD') as book_checkin, to_char(b.book_checkout,'YYYY-MM-DD') 
+ as book_checkout, b.book_count, ceil(rownum/5) as page from book b, inn i 
+ where b.inn_no=i.inn_no
+ ) where master=#{master}
+ ) where page=#{pageNo}
+</select>
+<!-- 6/17일 추가 -->
+<!-- 지역검색시 지역 자동완성 -->
+<select id="selectInnCityListByInnCityCharacter" parameterType="fvo"  resultType="ivo" resultMap="innResult">
+select distinct inn_area from inn where inn_area like '%' ||  #{searchWord} || '%' order by inn_area asc
+</select>
+	
+	<select id="select" resultType="ivo" resultMap="innResult">
+		<include refid="innlist"/> where inn_no = #{value}
+	</select>
+		<!--6/18 숙소 삭제시 예약한 테이블이 있나 확인하는 메서드임  --> 
+	<select id="checkChildBookTable" parameterType="int" resultType="int">
+	select count(*) from book where inn_no= #{value}
+	</select>
+	<!--6/25 회원탈퇴시 예약한 테이블이 있나 확인하는 메서드임  --> 
+	<select id="checkChildBookTablebymemberId" parameterType="String" resultType="int">
+	select count(*) from(
+	 select i.member_id as master from book b, inn i 
+ 	 where b.inn_no=i.inn_no
+	) where master= #{value}
+	</select>
+	<select id="checkMyChildBookTablebymemberId" parameterType="String" resultType="int">
+	select count(*) from(
+	 select b.member_id as master from book b, inn i 
+ 	 where b.inn_no=i.inn_no
+	) where master= #{value}
+	</select>
+	<!-- 6/19 등록한 숙소 수정 윤정-->
+		<update id="updateInnInfo"  parameterType="ivo">
+	update inn set inn_name=#{innName}, inn_area=#{innArea}, inn_address=#{innAddress}, inn_type=#{innType}, inn_acceptable_no=#{acceptableNo}, 
+inn_price=#{innPrice}, inn_info=#{innInfo} where inn_no=#{innNo}
+	</update>
+	<!-- 해당 숙소의 예약리스트 가져오기 -->
+	<select id="selectBookList" resultType="bvo" resultMap="bookResult">
+		select book_no, book_checkin, book_checkout, book_count, member_id, inn_no from BOOK 
+		where inn_no=#{value}
+	</select>	
+		<update id="updateInnAvailabilityOff">
+		update inn set inn_availability='N' where inn_no = #{value}
+	</update>
+		<update id="updateInnAvailabilityOn">
+		update inn set inn_availability='Y' where inn_no = #{value}
+	</update>
+		<!-- 6/17 예약 DB에 insert -->
+	<insert id="bookInsert" parameterType="bvo">
+	insert into BOOK(book_no, book_checkin, book_checkout, book_count, member_id, inn_no)
+	values(book_sequence.nextval, #{bookCheckIn}, #{bookCheckOut}, #{bookCount}, #{memberId}, #{innNo})
+	</insert>
+	<!-- 6/19 주형 숙소가능여부 변경 -->
+	<update id="updateinnAvailabilitytoNo">
+	update inn set inn_availability='N' where inn_no=#{value}
+	</update>
+	<update id="updateinnAvailabilitytoYes">
+	update inn set inn_availability='Y' where inn_no=#{value}
+	</update>
+	<!-- 6/19 위시리스트 -->
+	<insert id="wishlistreg" parameterType="wvo">
+	<selectKey keyProperty="wishListNo"  resultType="int"  order="BEFORE">
+	select wishlist_sequence.nextval from dual
+	</selectKey>
+	insert into wishlist(member_id,inn_no,wishlist_no) values(#{memberId},#{innNo},#{wishListNo})
+	</insert>
+	<select id="wishCheck" parameterType="wvo" resultType="int" >
+	select count(*) from WISHLIST where member_id=#{memberId} and inn_no=#{innNo}
+	</select>
+	<!-- 6/20 윤정 -->
+	<select id="getWishListNoByInnNo" parameterType="ivo" resultType="int" >
+	select wishlist_no from WISHLIST where member_id=#{memberId} and inn_no=#{innNo}
+	</select>
+	<!-- <select id="getAddressKind" resultType="string">
+		select distinct(address) from member
+	</select>
+	<select id="findByAddress" resultType="mvo">
+		<include refid="selectMember" />
+		where address=#{value}
+	</select>
+	<select id="findMemberById" resultType="mvo">
+		<include refid="selectMember" />
+		where id=#{value}
+	</select>
+	<insert id="registerMember" parameterType="mvo">
+		insert into member(id,password,name,address)
+		values(#{id},#{password},#{name},#{address})
+	</insert>
+	<select id="idcheck" resultType="int">
+		select count(*) from member where id=#{value}
+	</select>
+	<update id="updateMember" parameterType="mvo">
+		update member set password=#{password},name=#{name},address=#{address}
+		where id=#{id}
+	</update> -->
+	<!-- 6/25 검색 추가, 동적쿼리 사용 검색 -->
+	<!-- <select id="selectInnByWordAndAcceptNo" parameterType="fvo" resultType="ivo" resultMap="innResult">
+		select distinct inn_no, inn_name, inn_area, inn_address, inn_acceptable_no, inn_price, inn_type
+			from (select i.inn_no, i.inn_name, i.inn_area,i.inn_address,i.inn_type,i.inn_acceptable_no,i.inn_price,i.inn_availability,i.member_id,ad.availabledate_st,ad.availabledate_end, a.amenity_item from INN i, AVAILABLEDATE ad, AMENITY a where i.inn_no=ad.inn_no and i.inn_no=a.inn_no and i.inn_area like '%' ||  #{searchWord} || '%' and i.inn_acceptable_no >= #{searchPeopleNo}
+			<if test="minPrice!=null and maxPrice!=null">
+				 and i.inn_price between #{minPrice} and #{maxPrice}
+			</if>
+			)
+	</select>
+	<select id="selectInnByWordAndAcceptNoAndDate" parameterType="fvo" resultType="ivo" resultMap="innResult">
+		<![CDATA[select distinct inn_no, inn_name, inn_area, inn_address, inn_acceptable_no, inn_price, inn_type
+			from (select i.inn_no, i.inn_name, i.inn_area,i.inn_address,i.inn_type,i.inn_acceptable_no,i.inn_price,i.inn_availability,i.member_id,ad.availabledate_st,ad.availabledate_end, a.amenity_item from INN i, AVAILABLEDATE ad, AMENITY a where i.inn_no=ad.inn_no and i.inn_no=a.inn_no and i.inn_area like '%' ||  #{searchWord} || '%' and i.inn_acceptable_no >= #{searchPeopleNo} and ad.availabledate_st<=#{searchStartDate} and ad.availabledate_end >=#{searchEndDate}]]>
+			<if test="minPrice!=null and maxPrice!=null">
+				 and i.inn_price between #{minPrice} and #{maxPrice}
+			</if>
+			)
+	</select> -->
+	<!-- 6/25 검색 추가, 동적쿼리 사용 검색 -->
+	<select id="selectInnByWordAndAcceptNo" parameterType="hashmap" resultType="ivo" resultMap="innResult">
+		select inn_no, inn_name, inn_area, inn_acceptable_no, inn_price, inn_type from
+		(select inn_no, inn_name, inn_area, inn_acceptable_no, inn_price, inn_type, ceil(rownum/4) as page
+		from (select distinct inn_no, inn_name, inn_area, inn_acceptable_no, inn_price, inn_type
+		from (select i.inn_no, i.inn_name, i.inn_area,i.inn_address,i.inn_type,i.inn_acceptable_no,i.inn_price,
+		i.inn_availability,i.member_id,ad.availabledate_st,ad.availabledate_end, a.amenity_item from INN i, 
+		AVAILABLEDATE ad, AMENITY a where i.inn_no=ad.inn_no and i.inn_no=a.inn_no and i.inn_area 
+		like '%' ||  #{address} || '%' and i.inn_acceptable_no >= #{acceptableNo}
+			 <if test="minPrice!=null and maxPrice!=null">    
+				 and i.inn_price between #{minPrice} and #{maxPrice} 
+			</if>
+			)))where page =#{pageNo}
+	</select>
+	
+	<select id="getTotalSearchingCountWithNoDate" parameterType="hashmap" resultType="int">
+			select count(distinct inn_no) from(select i.inn_no,i.inn_name,i.inn_area,i.inn_address,i.inn_type,i.inn_acceptable_no, 
+		i.inn_price,i.inn_info,i.inn_availability,i.member_id, av.availabledate_st, av.availabledate_end from inn i, AVAILABLEDATE av, amenity a
+		where i.inn_no=av.inn_no and i.inn_no=a.inn_no and i.inn_area like '%' ||  #{address} || '%' and i.inn_acceptable_no>=#{acceptableNo}
+		<if test="minPrice!=null and maxPrice!=null">
+				 and i.inn_price between #{minPrice} and #{maxPrice}
+			</if>
+			)	
+		</select>
+	
+	<!-- 기본+날짜 -->
+	<select id="selectInnByWordAndAcceptNoAndDate" parameterType="hashmap" resultType="ivo" resultMap="innResult">
+		<![CDATA[select inn_no, inn_name, inn_area, inn_acceptable_no, inn_price, inn_type from
+		(select inn_no, inn_name, inn_area, inn_acceptable_no, inn_price, inn_type, ceil(rownum/4) as page
+		from (select distinct inn_no, inn_name, inn_area, inn_acceptable_no, inn_price, inn_type
+		from (select i.inn_no, i.inn_name, i.inn_area,i.inn_address,i.inn_type,i.inn_acceptable_no,i.inn_price,
+		i.inn_availability,i.member_id,ad.availabledate_st,ad.availabledate_end, a.amenity_item from INN i, 
+		AVAILABLEDATE ad, AMENITY a where i.inn_no=ad.inn_no and i.inn_no=a.inn_no and i.inn_area 
+		like '%' ||  #{address} || '%' and i.inn_acceptable_no >= #{acceptableNo} 
+		and ad.availabledate_st<=#{startDate} and ad.availabledate_end >=#{endDate}]]>
+			 <if test="minPrice!=null and maxPrice!=null">    
+				 and i.inn_price between #{minPrice} and #{maxPrice} 
+			</if>
+			)))where page =#{pageNo}
+	</select>
+
+	<select id="getTotalSearchingCountWithDate" parameterType="hashmap" resultType="int">
+      <![CDATA[select count(distinct inn_no) from(select i.inn_no,i.inn_name,i.inn_area,i.inn_address,i.inn_type,i.inn_acceptable_no, 
+      i.inn_price,i.inn_info,i.inn_availability,i.member_id, av.availabledate_st, av.availabledate_end from inn i, AVAILABLEDATE av, amenity a
+      where i.inn_no=av.inn_no and i.inn_no=a.inn_no and i.inn_area like '%' ||  #{address} || '%' and i.inn_acceptable_no>=#{acceptableNo} 
+      and av.availabledate_st<=#{startDate} and av.availabledate_end >=#{endDate}]]>
+      <if test="minPrice!=null and maxPrice!=null">
+             and i.inn_price between #{minPrice} and #{maxPrice}
+         </if>
+         )   
+      </select>
+	
+	
+		<select id="getInnByInnNo" parameterType="int" resultType="ivo" resultMap="innResult">
+	select inn_no, inn_name, inn_area, inn_address, inn_type, inn_price, inn_info from inn where inn_no=#{value}
+	</select>
+	
+	
+	<select id="selectInnByWordAndAcceptNoWithPriceFilter" parameterType="fvo" resultType="ivo" resultMap="innResult">
+		select inn_no,inn_name, inn_area, inn_address, inn_acceptable_no, inn_price, inn_type, count(*) from (select *
+from (select i.inn_no, i.inn_name, i.inn_area,i.inn_address,i.inn_type,i.inn_acceptable_no,i.inn_price,i.inn_availability,i.member_id,ad.availabledate_st,ad.availabledate_end, a.amenity_item from INN i, AVAILABLEDATE ad, AMENITY a where i.inn_no=ad.inn_no and i.inn_no=a.inn_no and i.inn_area like '%' || #{searchWord} || '%' and i.inn_acceptable_no >= #{searchPeopleNo} and i.inn_price between #{minPrice} and #{maxPrice})
+where amenity_item in
+		<foreach item="item" collection="amenityItems" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+		) group by inn_no,inn_name, inn_area, inn_address, inn_acceptable_no, inn_price, inn_type having count(*)=#{amenityCnt}
+	</select>
+	<select id="selectInnByWordAndAcceptNoAndDateWithPriceFilter" parameterType="fvo" resultType="ivo" resultMap="innResult">
+		<![CDATA[select inn_no,inn_name, inn_area, inn_address, inn_acceptable_no, inn_price, inn_type, count(*) from (select *
+from (select i.inn_no, i.inn_name, i.inn_area,i.inn_address,i.inn_type,i.inn_acceptable_no,i.inn_price,i.inn_availability,i.member_id,ad.availabledate_st,ad.availabledate_end, a.amenity_item from INN i, AVAILABLEDATE ad, AMENITY a where i.inn_no=ad.inn_no and i.inn_no=a.inn_no and i.inn_area like '%' || #{searchWord} || '%' and i.inn_acceptable_no >= #{searchPeopleNo} and ad.availabledate_st<=#{searchStartDate} and ad.availabledate_end >=#{searchEndDate} and i.inn_price between #{minPrice} and #{maxPrice})]]>
+where amenity_item in
+		<foreach item="item" collection="amenityItems" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+		) group by inn_no,inn_name, inn_area, inn_address, inn_acceptable_no, inn_price, inn_type having count(*)=#{amenityCnt}
+	</select>
+</mapper>
+ 
+ 
