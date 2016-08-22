@@ -1,12 +1,11 @@
 
 <?php
-
 include ('header.php');
 
 // 세션에 따라 패키지 가져오는 거
 $PackageSql = "SELECT pack_number, pack_name FROM package where c_id = $check_session_id";
 
-$result = mysqli_query ( $conn, $sql );
+$result = mysqli_query ( $conn, $PackageSql );
 
 $count = "SELECT count(*) FROM package where c_id = $check_session_id";
 
@@ -15,7 +14,19 @@ $PackageDetailSql = "SELECT pack_d.p_number, pack_d.pack_detail	FROM package pac
 					WHERE pack.pack_number = pack_d.pack_number AND c_id = $check_session_id";
 
 ?>
-
+<script type="text/javascript">
+//전체 체크//
+$(document).ready(function(){
+$("#check_all").click(function() {
+		$("input[name=packageCheck]:checkbox").attr("checked", true);
+	});
+//전체 체크 해제
+$("#uncheck_all").click(function() {
+		$("input[name=packageCheck]:checkbox").attr("checked", false);
+	});
+});
+	//끝 
+</script>
 
 <div class="container main-container headerOffset">
 	<div class="row">
@@ -70,10 +81,11 @@ $PackageDetailSql = "SELECT pack_d.p_number, pack_d.pack_detail	FROM package pac
 												<div class="col-xs-12 col-sm-12">
 													<table>
 														<tbody>
+														
 															<tr class="CartProduct">
 
-																<td style="width: 10%" class="CartProductThumb"><label>
-																		<input type="checkbox" value="">
+																<td style="width: 20%" class="CartProductThumb"><label>
+																		<input type="checkbox" name="packageCheck" value="">                          
 																</label></td>
 
 																<td style="width: 20%" class="CartProductThumb"><a
@@ -81,22 +93,21 @@ $PackageDetailSql = "SELECT pack_d.p_number, pack_d.pack_detail	FROM package pac
 																		src="images/17jungle_product/canon70d_1.jpg"></a>
 																	<h4>캐논eos50</h4> <small>50,000(1일기준)</small></td>
 
-																<td style="width: 50%"><p>제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명
-																	</p></td>
+																<td style="width: 20%"><input class="quanitySniper"
+																	type="text" value="2" name="quanitySniper"></td>
 
-																<td class="delete" style="width: 10%"><a title="Delete">
+																<td class="delete" style="width: 20%"><a title="Delete">
 																		<i class="glyphicon glyphicon-trash fa-2x"></i>
 																</a></td>
 
-																<td style="width: 10%"><a href="#"
-																	class="glyphicon glyphicon-pencil">수정 </a></td>
+
 
 															</tr>
 
 															<tr class="CartProduct">
 
-																<td style="width: 10%" class="CartProductThumb"><label>
-																		<input type="checkbox" value="">
+																<td style="width: 20%" class="CartProductThumb"><label>
+																		<input type="checkbox" name="packageCheck" value="">
 																</label></td>
 
 																<td style="width: 20%" class="CartProductThumb"><a
@@ -104,22 +115,21 @@ $PackageDetailSql = "SELECT pack_d.p_number, pack_d.pack_detail	FROM package pac
 																		src="images/17jungle_product/canon70d_1.jpg"></a>
 																	<h4>캐논eos50</h4> <small>50,000(1일기준)</small></td>
 
-																<td style="width: 50%"><p>제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명
-																	</p></td>
+																<td style="width: 20%"><input class="quanitySniper"
+																	type="text" value="2" name="quanitySniper"></td>
 
-																<td class="delete" style="width: 10%"><a title="Delete">
+																<td class="delete" style="width: 20%"><a title="Delete">
 																		<i class="glyphicon glyphicon-trash fa-2x"></i>
 																</a></td>
 
-																<td style="width: 10%"><a href="#"
-																	class="glyphicon glyphicon-pencil">수정 </a></td>
+
 
 															</tr>
 
 															<tr class="CartProduct">
 
-																<td style="width: 10%" class="CartProductThumb"><label>
-																		<input type="checkbox" value="">
+																<td style="width: 20%" class="CartProductThumb"><label>
+																		<input type="checkbox" name="packageCheck" value="">
 																</label></td>
 
 																<td style="width: 20%" class="CartProductThumb"><a
@@ -127,30 +137,36 @@ $PackageDetailSql = "SELECT pack_d.p_number, pack_d.pack_detail	FROM package pac
 																		src="images/17jungle_product/canon70d_1.jpg"></a>
 																	<h4>캐논eos50</h4> <small>50,000(1일기준)</small></td>
 
-																<td style="width: 50%"><p>제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명제품설명
-																	</p></td>
 
-																<td class="delete" style="width: 10%"><a title="Delete">
+																<td style="width: 20%"><input class="quanitySniper"
+																	type="text" value="2" name="quanitySniper"></td>
+
+
+																<td class="delete" style="width: 20%"><a title="Delete">
 																		<i class="glyphicon glyphicon-trash fa-2x"></i>
 																</a></td>
-
-																<td style="width: 10%"><a href="#"
-																	class="glyphicon glyphicon-pencil">수정 </a></td>
-
 															</tr>
-
-
-
+															<tr class="CartProduct">
+														
 														</tbody>
+														<tr>
+															<td>패키지
+																<p>설명
+															
+															</td>
+														</tr>
+
 													</table>
 													<div class="gap"></div>
 
 													<div class="col-lg-12">
 
-														<a class="btn btn-primary"> <span class="add2cart"><i
-																class="glyphicon glyphicon-trash"></i>delete All </span></a>
-
-														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+														<input class="btn btn-success" type="button"
+															id="check_all" value='모두 선택' /> <input
+															class="btn btn-success" type="button" id="uncheck_all"
+															value='모두 해제' /> <a class="btn btn-primary"> <span
+															class="add2cart"><i class="glyphicon glyphicon-trash"></i>선택
+																삭제</span></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
 															href="product_order.php" class="btn btn-success"> 주문하기</a>
 														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#"
 															class="btn btn-info"> <span
@@ -215,8 +231,8 @@ $PackageDetailSql = "SELECT pack_d.p_number, pack_d.pack_detail	FROM package pac
 
 <!-- Placed at the end of the document so the pages load faster -->
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
-</script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
 
 
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>

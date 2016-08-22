@@ -8,6 +8,21 @@ $(function() {
     	  dateFormat: 'yy-mm-dd'
     	});
 });
+
+
+//전체 체크//
+$(document).ready(function(){
+$("#check_all").click(function() {
+		$("input[name=packageCheck]:checkbox").attr("checked", true);
+	});
+//전체 체크 해제
+$("#uncheck_all").click(function() {
+		$("input[name=packageCheck]:checkbox").attr("checked", false);
+	});
+});
+	//끝 
+
+
 </script>
 
 
@@ -42,8 +57,7 @@ $(function() {
 
 								<tr class="CartProduct">
 
-									<td class="CartProductThumb"><label><input type="checkbox"
-											value=""></label> <a href="product-details.html"><img
+									<td class="CartProductThumb"><label><input type="checkbox" name="packageCheck" value=""></label> <a href="product-details.html"><img
 											src="images/17jungle_product/canon70d_2.jpg" alt="img"></a>
 										<h4>캐논eos50</h4> <small>50,000 원(1일기준)</small> <input
 										class="quanitySniper" type="text" value="2"
@@ -73,8 +87,7 @@ $(function() {
 								
 								<tr class="CartProduct">
 
-									<td class="CartProductThumb"><label><input type="checkbox"
-											value=""></label> <a href="product-details.html"><img
+									<td class="CartProductThumb"><label><input type="checkbox" name="packageCheck" value=""></label> <a href="product-details.html"><img
 											src="images/17jungle_product/canon70d_2.jpg" alt="img"></a>
 										<h4>캐논eos50</h4> <small>50,000 원(1일기준)</small> <input
 										class="quanitySniper" type="text" value="2"
@@ -104,8 +117,7 @@ $(function() {
 								
 								<tr class="CartProduct">
 
-									<td class="CartProductThumb"><label><input type="checkbox"
-											value=""></label> <a href="product-details.html"><img
+									<td class="CartProductThumb"><label><input type="checkbox" name="packageCheck" value=""></label> <a href="product-details.html"><img
 											src="images/17jungle_product/canon70d_2.jpg" alt="img"></a>
 										<h4>캐논eos50</h4> <small>50,000 원(1일기준)</small> <input
 										class="quanitySniper" type="text" value="2"
@@ -151,11 +163,15 @@ $(function() {
 							<input type="text" id="testDatepicker" class="btn btn-default" value="데이터피커날짜선택"><i
 									class="glyphicon glyphicon-calendar"></i> -->
 
-								
+							
 									대여날짜:&nbsp;<input type="text" id="datepicker1"> ~ <input type="text"
 										id="datepicker2">
 										<span class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i>
 								확인</span>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								
+								<input class="btn btn-success" type="button" id="check_all" value='모두 선택' />
+								<input class="btn btn-success" type="button" id="uncheck_all" value='모두 해제' />
 
 							</div>
 
