@@ -1301,7 +1301,7 @@ legend {
 .swiper-container {
     width: 100%;
     height: 100%;
-    height: 490px;
+    height: 350px;
     color: #fff;
     text-align: center;
 }
@@ -1316,15 +1316,15 @@ legend {
 }
 
 .slide-2x {
-    width: 500px;
+    width: 350px;
 }
 
 .slide-4x {
-    width: 500px;
+    width: 350px;
 }
 
 .slide-1x {
-    width: 300px;
+    width: 350px;
 }
 
 .box-4in {
@@ -1573,11 +1573,11 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
 
 @media (max-width: 991px) {
     .swiper-container {
-        height: 490px;
+        height: 350px;
     }
 
     .slide-2x, .slide-4x, .slide-1x {
-        width: 490px;
+        width: 350px;
     }
 
     .box-text {
@@ -2421,7 +2421,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
     }
 
     .featuredImageLook3 .inner .img-title {
-        font-size: 16px;
+        font-size: 10px;
         letter-spacing: 1px;
     }
 }

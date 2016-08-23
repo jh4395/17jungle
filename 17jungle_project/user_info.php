@@ -48,17 +48,17 @@ $(document).ready(function(){
 						method="post" id="updateForm">
 						
                     <div class="col-xs-12 col-sm-6">
-                        <div class="form-group required">
-                            <label for="InputName"> Name <sup>*</sup> </label>
-                            <input required type="text" class="form-control" name="userName"  id="user_name" value="<?php echo $check_session_name ?>">
+                        <div class="form-group">
+                            <label > Name <sup>*</sup> </label>
+                            <input type="text" class="form-control" name="userName"  id="user_name" value="<?php echo $check_session_name ?>" >
                         </div>
-                        <div class="form-group required">
+                        <div class="form-group">
                             <label for="Inputphone">Phone <sup>*</sup> </label>
-                            <input required type="tel" class="form-control" name="userPhone" id="user_phone" value="<?php echo $check_session_phone ?>">
+                            <input  type="tel" class="form-control" name="userPhone" id="user_phone" value="<?php echo $check_session_phone ?>">
                         </div>
                         <div class="form-group required">
                             <label for="InputEmail"> Email </label>
-                            <input required type="email" class="form-control" name="userEmail" id="user_email" value="<?php echo $check_session_email ?>">
+                            <input  type="email" class="form-control" name="userEmail" id="user_email" value="<?php echo $check_session_email ?>">
                         </div>
                         <div class="form-group required">
                             <label for="Inputjob"> Job </label>

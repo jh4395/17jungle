@@ -1,6 +1,6 @@
 <?php
 $conn = new mysqli ( "localhost", "17jungle", "playjungle", "jh_17jungle" );
-
+session_start();
 if ($conn->connect_error) {
 	die ( "Connection failed: " . $conn->connect_error );
 }
@@ -12,7 +12,6 @@ $check_session_email = "";
 $check_session_phone = "";
 $check_session_job = "";
 $check_session_address = "";
-
 
 if (isset ( $_SESSION ['id'] )) {
 	$check_session_id = $_SESSION ['id'];
