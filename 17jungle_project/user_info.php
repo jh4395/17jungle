@@ -37,13 +37,13 @@ $(document).ready(function(){
                     class="glyphicon glyphicon-user"></i> My personal information </span></h1>
 
             <div class="row userInfo">
-                <div class="col-lg-12">
+                <!-- <div class="col-lg-12">
                     <h2 class="block-title-2"> Please be sure to update your personal information if it has
                         changed. </h2>
 
                     <p class="required"><sup>*</sup> Required field</p>
                 </div>
-                
+                 -->
                 <form role="form" class="updateForm" action="user_update.php"
 						method="post" id="updateForm">
 						

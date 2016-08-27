@@ -6,7 +6,7 @@
 #########################################################################
 # LIST 설정
 # 1. 한 페이지에 보여질 게시물의 수
-$page_size=6;    
+$page_size=12;    
 
 # 2. 페이지 나누기에 표시될 페이지의 수
 $page_list_size = 5;
@@ -110,15 +110,15 @@ $current_page = floor($no/$page_size);
 
 				<div class="catTopBar clearfix">
 					<div class="catTopBarInner clearfix">
-						<div class="col-lg-3 col-md-3 col-sm-12">
+						<!-- <div class="col-lg-3 col-md-3 col-sm-12">
 							<div class="f-left hidden-xs">
 								<h4 class="filterToggle">
-									<i class="fa fa-bars"></i> <strong>Filter</strong> <span>
+									<i class="fa fa-bars"></i> <strong>Fil</strong> <span>
 										&nbsp; </span>
 								</h4>
 							</div>
-						</div>
-						<div class="col-lg-9 col-md-9 col-sm-12">
+						</div> -->
+						<div class="col-lg-12 col-md-12 col-sm-12">
 							<div class="f-right">
 								<div class="w100  clearfix center-xs-inner">
 									<p class="pull-left shrtByP center-xs">
@@ -148,6 +148,7 @@ $current_page = floor($no/$page_size);
 				<!--left column-->
 
 				<div class="catColumnWrapper">
+<!-- 
 					<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 filterColumn">
 
 						<nav class="navbar navbar-default">
@@ -167,7 +168,7 @@ $current_page = floor($no/$page_size);
 									
 								</div>
 
-								<!-- 부트스트랩 버튼 -->
+								
 								<div class="collapse navbar-collapse" id="search-bar">
 									
 									<ul class="nav navbar-nav">
@@ -226,14 +227,14 @@ $current_page = floor($no/$page_size);
 										
 									</ul>
 								</div>
-								<!-- /.navbar-collapse -->
+								
 							</div>
-							<!-- /.container-fluid -->
+							
 						</nav>
-
+ 
 
 					</div>
-
+-->
 					<!--right column-->
 					<!-- package modal -->
 					
@@ -280,7 +281,7 @@ $current_page = floor($no/$page_size);
 					
 					
 					
-					<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 categoryColumn">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 categoryColumn">
 
 					<!--/.productFilter-->
 						<div class="row  categoryProduct clearfix">
@@ -295,7 +296,7 @@ if (mysqli_num_rows($result) > 0) {
 
 ?>
 	
-							<div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6">
+							<div class="item col-sm-4 col-lg-3 col-md-3 col-xs-6">
 								<div class="product">
 								
 								<a class="add-fav tooltipHere" href='#' data-toggle='modal' data-target='#ModalPackage'

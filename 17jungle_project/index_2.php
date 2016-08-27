@@ -1,5 +1,5 @@
 
- <?php include ('header.php');?> 
+ <?php include ('header_2.php');?> 
 
 	<div class="banner banner-boxes">
 		<div class="slider-content">

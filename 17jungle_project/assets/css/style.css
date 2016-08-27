@@ -1424,7 +1424,6 @@ legend {
     background: rgba(0, 0, 0, 0);
     height: 100%;
     position: absolute;
-    right: 5px;
     top: 0;
     visibility: hidden;
     transition: all 0.2s ease 0s;
@@ -2303,8 +2302,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
 
 .featuredImageLook3 .inner {
     display: block;
-    position: relative;
-    margin-bottom: 30px;
+    padding-left: 0px;
 }
 
 .image-show-case-wrapper .ps-nav {

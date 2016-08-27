@@ -64,8 +64,8 @@
 
     <div class="row featuredPostContainer ">
         <div class="featuredImageLook3">
-            <div class="col-md-4 col-sm-4 col-xs-4 col-xs-min-4">
-                <div class="inner">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xs-min-4" style="padding: 0px;">
+                <div class="inner" >
                     <div class="box-content-overly box-content-overly-white">
                         <div class="box-text-table">
                             <div class="box-text-cell ">
@@ -84,7 +84,7 @@
                     <a class="img-block" href="#"> <img class="img-responsive" src="images/look3/2.jpg" alt="img"></a>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-4 col-xs-4 col-xs-min-4">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xs-min-4" style="padding: 0px;">
                 <div class="inner">
                     <div class="box-content-overly box-content-overly-white">
                         <div class="box-text-table">
@@ -104,7 +104,7 @@
                     <a class="img-block" href="#"> <img class="img-responsive" src="images/look3/1.jpg" alt="img"></a>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-4 col-xs-4 col-xs-min-4">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xs-min-4" style="padding: 0px;">
                 <div class="inner">
                     <div class="box-content-overly box-content-overly-white">
                         <div class="box-text-table">
@@ -124,7 +124,7 @@
                     <a class="img-block" href="#"> <img class="img-responsive" src="images/look3/3.jpg" alt="img"></a>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-4 col-xs-4 col-xs-min-4">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xs-min-4" style="padding: 0px;">
                 <div class="inner">
                     <div class="box-content-overly box-content-overly-white">
                         <div class="box-text-table">
@@ -144,7 +144,7 @@
                     <a class="img-block" href="#"> <img class="img-responsive" src="images/look3/4.jpg" alt="img"></a>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-4 col-xs-4 col-xs-min-4">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xs-min-4" style="padding: 0px;">
                 <div class="inner">
                     <div class="box-content-overly box-content-overly-white">
                         <div class="box-text-table">
@@ -164,7 +164,7 @@
                     <a class="img-block" href="#"> <img class="img-responsive" src="images/look3/5.jpg" alt="img"></a>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-4 col-xs-4 col-xs-min-4">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xs-min-4" style="padding: 0px;">
                 <div class="inner">
                     <div class="box-content-overly box-content-overly-white">
                         <div class="box-text-table">
@@ -184,7 +184,7 @@
                     <a class="img-block" href="#"> <img class="img-responsive" src="images/look3/6.jpg" alt="img"></a>
                 </div>
             </div>
-              <div class="col-md-4 col-sm-4 col-xs-4 col-xs-min-4">
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xs-min-4" style="padding: 0px;">
                 <div class="inner">
                     <div class="box-content-overly box-content-overly-white">
                         <div class="box-text-table">
@@ -204,7 +204,7 @@
                     <a class="img-block" href="#"> <img class="img-responsive" src="images/look3/6.jpg" alt="img"></a>
                 </div>
             </div>
-              <div class="col-md-4 col-sm-4 col-xs-4 col-xs-min-4">
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xs-min-4" style="padding: 0px;">
                 <div class="inner">
                     <div class="box-content-overly box-content-overly-white">
                         <div class="box-text-table">
@@ -223,7 +223,7 @@
                     <a class="img-block" href="#"> <img class="img-responsive" src="images/look3/6.jpg" alt="img"></a>
                 </div>
             </div>
-              <div class="col-md-4 col-sm-4 col-xs-4 col-xs-min-4">
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xs-min-4" style="padding: 0px;">
                 <div class="inner">
                     <div class="box-content-overly box-content-overly-white">
                         <div class="box-text-table">
@@ -259,25 +259,22 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script type="text/javascript" src="assets/js/jquery/jquery-1.10.1.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/js/idangerous.swiper-2.1.min.js"></script>
+<script src="assets/plugins/swiper-master/js/swiper.jquery.min.js"></script>
 <script>
-    var mySwiper = new Swiper('.swiper-container', {
-        pagination: '.box-pagination',
-        keyboardControl: true,
-        paginationClickable: true,
-        slidesPerView: 'auto',
-        autoResize: true,
-        resizeReInit: true,
-    })
 
-    $('.prevControl').on('click', function (e) {
-        e.preventDefault()
-        mySwiper.swipePrev()
-    })
-    $('.nextControl').on('click', function (e) {
-        e.preventDefault()
-        mySwiper.swipeNext()
-    })
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: '.swiper-pagination',
+        nextButton: '.arrow-right',
+        prevButton: '.arrow-left',
+        // effect: 'cube',
+        keyboardControl: true,
+        parallax: true,
+        speed: 600,
+        spaceBetween: 0
+    });
+
+
 </script>
 
 <!-- include jqueryCycle plugin -->
@@ -316,6 +313,62 @@
 
 <!-- include custom script for site  -->
 <script src="assets/js/script.js"></script>
+
+<!-- 사이드바 스크립트 헤더에 옮기기 -->
+
+<!-- scrollme || onscroll parallax effect for category page  -->
+<script src="assets/js/jquery.scrollme.min.js"></script>
+<script type="text/javascript">
+
+
+    $(function () {
+        var target = $("div.has-overly-shade"),
+            targetHeight = target.outerHeight();
+        $(document).scroll(function () {
+            var scrollPercent = (targetHeight - window.scrollY) / targetHeight;
+            scrollPercent >= 0 && (target.css("background-color", "rgba(0,0,0," + (1.1 - scrollPercent) + ")"))
+        })
+    });
+
+
+    $(function () {
+        if (navigator.userAgent.match(/(iPod|iPhone|iPad|Android)/)) {
+            $('#ios-notice').removeClass('hidden');
+            $('.parallax-container').height($(window).height() * 0.5 | 0);
+        } else {
+            $(window).resize(function () {
+                var parallaxHeight = Math.max($(window).height() * 0.7, 200) | 0;
+                $('.parallax-container').height(parallaxHeight);
+            }).trigger('resize');
+        }
+    });
+
+
+    $(document).ready(function () {
+        var isMobile = function () {
+            //console.log("Navigator: " + navigator.userAgent);
+            return /(iphone|ipod|ipad|android|blackberry|windows ce|palm|symbian)/i.test(navigator.userAgent);
+        };
+
+        if (isMobile()) {
+            // For  mobile , ipad, tab
+            $('.animateme').removeClass('animateme');
+            $('.if-is-mobile').addClass('ismobile');
+
+        } else {
+        }
+
+
+    }); // end
+
+
+
+
+
+</script>
+
+
 </body>
 </html>
+
 
