@@ -72,6 +72,43 @@ $current_page = floor($no/$page_size);
 
 <link href="assets/css/category-2.css" rel="stylesheet">
 
+<!-- ModalPackage start -->
+	<div class="modal fade" id="ModalPackage" tabindex="-1"
+		role="dialog">
+		<div class="modal-dialog ">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h3 class="modal-title-site text-center">패키지 선택</h3>
+				</div>		
+					
+				<div class="modal-body">
+						<div class="form-group login-username">
+							<div>
+								<input name="package1" id="package1" class="form-control input"
+									size="20" value="영상패키지" type="button">
+							</div>
+						</div>
+						<div class="form-group login-password">
+							<div>
+								<input name="package2" id="package2"
+									class="form-control input" size="20" value="사진패키지"
+									type="button">
+							</div>
+						</div>
+						
+				</div>
+			
+			</div>
+			<!-- /.modal-content -->
+
+		</div>
+		<!-- /.modal-dialog -->
+
+	</div>
+	<!-- /. ModalPackage -->
+
 <section class="category-wrapper">
 
 	<section id="category-intro"
@@ -236,51 +273,7 @@ $current_page = floor($no/$page_size);
 					</div>
 -->
 					<!--right column-->
-					<!-- package modal -->
-					
-					
-						<!-- ModalPackage start -->
-	<div class="modal fade" id="ModalPackage" tabindex="-1"
-		role="dialog">
-		<div class="modal-dialog ">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h3 class="modal-title-site text-center">패키지 선택</h3>
-				</div>		
-					
-				<div class="modal-body">
-						<div class="form-group login-username">
-							<div>
-								<input name="package1" id="package1" class="form-control input"
-									size="20" value="영상패키지" type="button">
-							</div>
-						</div>
-						<div class="form-group login-password">
-							<div>
-								<input name="package2" id="package2"
-									class="form-control input" size="20" value="사진패키지"
-									type="button">
-							</div>
-						</div>
-						
-				</div>
-			
-			</div>
-			<!-- /.modal-content -->
-
-		</div>
-		<!-- /.modal-dialog -->
-
-	</div>
-	<!-- /. ModalPackage -->
-					
-					
-					<!-- modal finished -->
-					
-					
-					
+				
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 categoryColumn">
 
 					<!--/.productFilter-->
@@ -296,7 +289,7 @@ if (mysqli_num_rows($result) > 0) {
 
 ?>
 	
-							<div class="item col-sm-4 col-lg-3 col-md-3 col-xs-6">
+							<div class="item col-sm-4 col-lg-3 col-md-3 col-xs-6" style="height: 10%;">
 								<div class="product">
 								
 								<a class="add-fav tooltipHere" href='#' data-toggle='modal' data-target='#ModalPackage'

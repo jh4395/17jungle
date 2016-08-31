@@ -186,6 +186,10 @@
 .nav-tree-light li a:hover {
   opacity: .75;
 }
+.side-bar-close-trigger i:hover{
+	opacity: .75;
+}
+
 .nav-tree-light li ul {
   background: none !important;
 }

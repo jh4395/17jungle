@@ -52,6 +52,13 @@ $(function () {
         $('body').toggleClass('modal-open');
         //$('.cart-sidebar').toggleClass('hasTopBar');
     });
+    
+    $(".side-bar-close-trigger").click(function(event){
+    	$('.menu-overly-mask').toggleClass('is-visible');
+    	$('.menu-sidebar').toggleClass('is-visible');
+    	
+    });
+    
 
     $(".search-trigger").on('click', function (e) {
         $('.search-overly-mask').toggleClass("open"); //you can list several class names

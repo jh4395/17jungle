@@ -1,6 +1,6 @@
 <?php
 $conn = new mysqli ( "localhost", "17jungle", "playjungle", "jh_17jungle" );
-session_start();
+session_start ();
 if ($conn->connect_error) {
 	die ( "Connection failed: " . $conn->connect_error );
 }
@@ -16,11 +16,11 @@ $check_session_address = "";
 if (isset ( $_SESSION ['id'] )) {
 	$check_session_id = $_SESSION ['id'];
 	$check_session_password = $_SESSION ['password'];
-	$check_session_name = $_SESSION['name'];
-	$check_session_email = $_SESSION['email'];
-	$check_session_phone = $_SESSION['phone'];
-	$check_session_job = $_SESSION['job'];
-	$check_session_address = $_SESSION['address'];
+	$check_session_name = $_SESSION ['name'];
+	$check_session_email = $_SESSION ['email'];
+	$check_session_phone = $_SESSION ['phone'];
+	$check_session_job = $_SESSION ['job'];
+	$check_session_address = $_SESSION ['address'];
 	
 	$sql = "SELECT * FROM customer WHERE c_password='" . $check_session_password . " and c_id=" . $check_session_id . "'";
 	$result = $conn->query ( $sql );
@@ -59,12 +59,12 @@ if (isset ( $_SESSION ['id'] )) {
 
 <!-- Custom styles for this template -->
 <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/home-v7.css" rel="stylesheet">
-    <link href="assets/css/cart-nav.css" rel="stylesheet">
+<link href="assets/css/home-v7.css" rel="stylesheet">
+<link href="assets/css/cart-nav.css" rel="stylesheet">
 
-    
-  <!-- gall-item Gallery for gallery page -->
-  <link href="assets/plugins/magnific/magnific-popup.css" rel="stylesheet">
+
+<!-- gall-item Gallery for gallery page -->
+<link href="assets/plugins/magnific/magnific-popup.css" rel="stylesheet">
 
 <!-- Just for debugging purposes. -->
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -76,7 +76,8 @@ if (isset ( $_SESSION ['id'] )) {
 <!-- include pace script for automatic web page progress bar  -->
 
 <!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
         paceOptions = {
             elements: true
@@ -93,252 +94,329 @@ if (isset ( $_SESSION ['id'] )) {
 
 <body>
 
-<div id="search-overly" class="search-overly-mask">
-    <a class=" search-close search-overly-close-trigger "> <i class=" fa fa-times-circle"> </i> </a>
-    <div class="container">
-
-        <form class="form-horizontal">
-            <fieldset>
-
-                <!-- Form Name -->
-
-                <!-- Appended Input-->
-                <div class="control-group">
-                    <label class="control-label">Search into the shop..</label>
-
-                    <div class="controls">
-                        <div class="search " role="search" id="mySearch">
-                            <input class="form-control" placeholder="Start typing " type="search">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                    <span class="sr-only">Search</span>
-                                </button>
-                            </span>
-                        </div>
-                        <!-- for error or message -->
-                        <p class="help-block hide">help</p>
-                    </div>
-                </div>
-
-            </fieldset>
-        </form>
-
-
-    </div>
+<div id="sidebanner">
+   <a href="#"><img class="bannerImg" src="images/add_icon.png" width="50px" height="50px"></img></a>
 </div>
-<!-- /#search-overly -->
-<div class="overly-mask"></div>
-<div class="menu-overly-mask"></div>
-<!-- /.overly-mask -->
 
-<aside class="menu-sidebar">
-    <div class="menu-sidebar-content">
+	<div id="search-overly" class="search-overly-mask">
+		<a class=" search-close search-overly-close-trigger "> <i
+			class=" fa fa-times-circle"> </i>
+		</a>
+		<div class="container">
 
-        <div class="inner">
+			<form class="form-horizontal">
+				<fieldset>
 
-            <div class="menu-sidebar-header">
-                <h3>Menu</h3>
- 
-            </div>
+					<!-- Form Name -->
 
-            <div class="menu-sidebar-nav">
+					<!-- Appended Input-->
+					<div class="control-group">
+						<label class="control-label">Search into the shop..</label>
 
-                <ul class="nav-category nav-sidebar nav-tree-light   nav-tree">
-                    <li class="">
-                        <a> 렌탈</a>
-                        <ul>
-                        	<li><a href="product_list.php">전체보기</a></li>
-                            <li><a href="#">카메라</a></li>
-                            <li><a href="#">렌즈</a></li>
-                            <li><a href="#">캠코더</a></li>
-                            <li><a href="#">조명</a></li>
-                            <li><a href="#">녹음</a></li>
-                            <li><a href="#">삼각대/악세사리</a></li>
-                            <li><a href="#">전자기기</a></li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a>커뮤니티</a>
-                    </li>
-                    <li><a href="#"> Baby &amp; Kids </a></li>
-                    <li><a href="#"> Home &amp; Kitchen </a></li>
-                    <li><a href="#"> Baby &amp; Kids </a></li>
+						<div class="controls">
+							<div class="search " role="search" id="mySearch">
+								<input class="form-control" placeholder="Start typing "
+									type="search"> <span class="input-group-btn">
+									<button class="btn btn-default" type="button">
+										<span class="glyphicon glyphicon-search"></span> <span
+											class="sr-only">Search</span>
+									</button>
+								</span>
+							</div>
+							<!-- for error or message -->
+							<p class="help-block hide">help</p>
+						</div>
+					</div>
+
+				</fieldset>
+			</form>
+
+
+		</div>
+	</div>
+	<!-- /#search-overly -->
+	<div class="overly-mask"></div>
+	<div class="menu-overly-mask"></div>
+	<!-- /.overly-mask -->
+
+
+	<aside class="menu-sidebar">
+		<div class="menu-sidebar-content">
+
+			<div class="inner">
+
+				<div class="menu-sidebar-header">
+
+					<h3>Menu<a class="side-bar-close-trigger">
+						<i class="glyphicon glyphicon-chevron-left"></i></a></h3>
+					<!-- <a class="side-bar-close-trigger"><i class="glyphicon glyphicon-chevron-left"></i></a> -->
+
+				</div>
+				<div class="menu-sidebar-nav">
+
+					<ul class="nav-category nav-sidebar nav-tree-light  nav-tree">
+						<li class=""><a> 렌탈</a>
+							<ul>
+								<li><a href="product_list.php">전체보기</a></li>
+								<li><a href="#">카메라</a></li>
+								<li><a href="#">렌즈</a></li>
+								<li><a href="#">캠코더</a></li>
+								<li><a href="#">조명</a></li>
+								<li><a href="#">녹음</a></li>
+								<li><a href="#">삼각대/악세사리</a></li>
+								<li><a href="#">전자기기</a></li>
+							</ul></li>
+						<li class=""><a>커뮤니티</a></li>
+
+						<li><a href="#"> Baby &amp; Kids </a></li>
+                  
+                     
+                <?php
+																
+																if (! isset ( $_SESSION ['id'] )) // 로그인안됨
+{
+																	echo "<li><a href='#' data-toggle='modal' data-target='#ModalLogin'>
+										 Login <i class='fa fa-user'></i></a></li>";
+																} else {
+																	echo "<li><a href='user_info.php'>$check_session_name 님</a></li>
+								<li><a href='logout.php'>logout</a></li>";
+																}
+																?>
+                
+                
                 </ul>
 
-            </div>
+				</div>
 
 
-        </div>
-    </div>
-</aside>
-<!-- /.menu-sidebar -->
-<aside class="cart-sidebar">
-    <div class="cart-sidebar-content">
-
-        <div class="cartMenu   col-xs-12 no-margin-no-padding  ">
-
-            <div class="cart-sidebar-header">
-                <h3>Your Bag </h3>
-
-                <div class="cart-close-trigger">
-                    <button class="close" type="button">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-            </div>
-
-            <div class="w100  scroll-pane">
-                <table>
-                    <tbody>
-                    <tr class="miniCartProduct">
-                        <td class="miniCartProductThumb" style="20%">
-                            <div><a href="product-details.html"> <img alt="img" src="images/product/16.jpg"> </a>
-                            </div>
-                        </td>
-                        <td style="40%">
-                            <div class="miniCartDescription">
-                                <h4><a href="product-details.html"> Denim T shirt Black </a></h4>
-                                <span class="size"> 12 x 1.5 L </span>
-
-                                <div class="price"><span> $8.80 </span></div>
-                            </div>
-                        </td>
-
-                        <td class="delete" style="20%">
-                            <button type="button" class="close"><span aria-hidden="true">×</span></button>
-                        </td>
-                    </tr>
-
-                    <tr class="miniCartProduct">
-                        <td class="miniCartProductThumb" style="20%">
-                            <div><a href="product-details.html"> <img alt="img" src="images/product/5.jpg"> </a>
-                            </div>
-                        </td>
-                        <td style="40%">
-                            <div class="miniCartDescription">
-                                <h4><a href="product-details.html"> Denim T shirt Black </a></h4>
-                                <span class="size"> 12 x 1.5 L </span>
-
-                                <div class="price"><span> $8.80 </span></div>
-                            </div>
-                        </td>
-
-                        <td class="delete" style="20%">
-                            <button type="button" class="close"><span aria-hidden="true">×</span></button>
-                        </td>
-                    </tr>
-                    <tr class="miniCartProduct">
-                        <td class="miniCartProductThumb" style="20%">
-                            <div><a href="product-details.html"> <img alt="img" src="images/product/7.jpg"> </a>
-                            </div>
-                        </td>
-                        <td style="40%">
-                            <div class="miniCartDescription">
-                                <h4><a href="product-details.html"> Denim T shirt Black </a></h4>
-                                <span class="size"> 12 x 1.5 L </span>
-
-                                <div class="price"><span> $8.80 </span></div>
-                            </div>
-                        </td>
-
-                        <td class="delete" style="20%">
-                            <button type="button" class="close"><span aria-hidden="true">×</span></button>
-                        </td>
-                    </tr>
-                    <tr class="miniCartProduct">
-                        <td class="miniCartProductThumb" style="20%">
-                            <div><a href="product-details.html"> <img alt="img" src="images/product/13.jpg"> </a>
-                            </div>
-                        </td>
-                        <td style="40%">
-                            <div class="miniCartDescription">
-                                <h4><a href="product-details.html"> Denim T shirt Black </a></h4>
-                                <span class="size"> 12 x 1.5 L </span>
-
-                                <div class="price"><span> $8.80 </span></div>
-                            </div>
-                        </td>
-
-                        <td class="delete" style="20%">
-                            <button type="button" class="close"><span aria-hidden="true">×</span></button>
-                        </td>
-                    </tr>
-                    <tr class="miniCartProduct">
-                        <td class="miniCartProductThumb" style="20%">
-                            <div><a href="product-details.html"> <img alt="img" src="images/product/4.jpg"> </a>
-                            </div>
-                        </td>
-                        <td style="40%">
-                            <div class="miniCartDescription">
-                                <h4><a href="product-details.html"> Denim T shirt Black </a></h4>
-                                <span class="size"> 12 x 1.5 L </span>
-
-                                <div class="price"><span> $8.80 </span></div>
-                            </div>
-                        </td>
-                        <td class="delete" style="20%">
-
-                            <button type="button" class="close"><span aria-hidden="true">×</span></button>
-
-                        </td>
-                    </tr>
+			</div>
+		</div>
+	</aside>
+	<!-- /.menu-sidebar -->
 
 
-                    <tr class="miniCartProduct">
-                        <td class="miniCartProductThumb" style="20%">
-                            <div><a href="product-details.html"> <img alt="img" src="images/product/9.jpg"> </a>
-                            </div>
-                        </td>
-                        <td style="40%">
-                            <div class="miniCartDescription">
-                                <h4><a href="product-details.html"> Product Item </a></h4>
-                                <span class="size"> 12 x 1.5 L </span>
+	<aside class="cart-sidebar">
+		<div class="cart-sidebar-content">
 
-                                <div class="price"><span> $90 </span></div>
-                            </div>
-                        </td>
-                        <td class="delete" style="20%">
+			<div class="cartMenu   col-xs-12 no-margin-no-padding  ">
 
-                            <button type="button" class="close"><span aria-hidden="true">×</span></button>
+				<div class="cart-sidebar-header">
+					<h3>Your Bag</h3>
 
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <!--/.scroll-pane-->
+					<div class="cart-close-trigger">
+						<button class="close" type="button">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+				</div>
 
-            <div class="miniCartFooter cart-panel-footer clearfix">
+				<div class="w100  scroll-pane">
+					<table>
+						<tbody>
+							<tr class="miniCartProduct">
+								<td class="miniCartProductThumb" style="">
+									<div>
+										<a href="product-details.html"> <img alt="img"
+											src="images/product/16.jpg">
+										</a>
+									</div>
+								</td>
+								<td style="">
+									<div class="miniCartDescription">
+										<h4>
+											<a href="product-details.html"> Denim T shirt Black </a>
+										</h4>
+										<span class="size"> 12 x 1.5 L </span>
 
-                <h3 class="text-right subtotal"> Subtotal: $210 </h3>
+										<div class="price">
+											<span> $8.80 </span>
+										</div>
+									</div>
+								</td>
 
-                <div class="col-sm-6 ">
-                    <a class="btn btn-danger  btn-block">
-                        <i class="fa fa-shopping-cart"> </i> VIEW CART </a>
-                </div>
+								<td class="delete" style="">
+									<button type="button" class="close">
+										<span aria-hidden="true">×</span>
+									</button>
+								</td>
+							</tr>
 
-                <div class="col-sm-6 ">
+							<tr class="miniCartProduct">
+								<td class="miniCartProductThumb" style="">
+									<div>
+										<a href="product-details.html"> <img alt="img"
+											src="images/product/5.jpg">
+										</a>
+									</div>
+								</td>
+								<td style="">
+									<div class="miniCartDescription">
+										<h4>
+											<a href="product-details.html"> Denim T shirt Black </a>
+										</h4>
+										<span class="size"> 12 x 1.5 L </span>
 
-                    <a class="btn  btn-primary btn-block ">
-                        CHECKOUT </a>
+										<div class="price">
+											<span> $8.80 </span>
+										</div>
+									</div>
+								</td>
 
-                </div>
-            </div>
+								<td class="delete" style="">
+									<button type="button" class="close">
+										<span aria-hidden="true">×</span>
+									</button>
+								</td>
+							</tr>
+							<tr class="miniCartProduct">
+								<td class="miniCartProductThumb" style="">
+									<div>
+										<a href="product-details.html"> <img alt="img"
+											src="images/product/7.jpg">
+										</a>
+									</div>
+								</td>
+								<td style="">
+									<div class="miniCartDescription">
+										<h4>
+											<a href="product-details.html"> Denim T shirt Black </a>
+										</h4>
+										<span class="size"> 12 x 1.5 L </span>
 
-            <!--/.miniCartFooter-->
+										<div class="price">
+											<span> $8.80 </span>
+										</div>
+									</div>
+								</td>
 
-        </div>
-        <!--/.cartMenu-->
+								<td class="delete" style="">
+									<button type="button" class="close">
+										<span aria-hidden="true">×</span>
+									</button>
+								</td>
+							</tr>
+							<tr class="miniCartProduct">
+								<td class="miniCartProductThumb" style="">
+									<div>
+										<a href="product-details.html"> <img alt="img"
+											src="images/product/13.jpg">
+										</a>
+									</div>
+								</td>
+								<td style="">
+									<div class="miniCartDescription">
+										<h4>
+											<a href="product-details.html"> Denim T shirt Black </a>
+										</h4>
+										<span class="size"> 12 x 1.5 L </span>
 
-    </div>
-    <!--.cart-sidebar-content-->
-</aside>
-<!-- /.cart-sidebar -->
+										<div class="price">
+											<span> $8.80 </span>
+										</div>
+									</div>
+								</td>
+
+								<td class="delete" style="">
+									<button type="button" class="close">
+										<span aria-hidden="true">×</span>
+									</button>
+								</td>
+							</tr>
+							<tr class="miniCartProduct">
+								<td class="miniCartProductThumb" style="">
+									<div>
+										<a href="product-details.html"> <img alt="img"
+											src="images/product/4.jpg">
+										</a>
+									</div>
+								</td>
+								<td style="">
+									<div class="miniCartDescription">
+										<h4>
+											<a href="product-details.html"> Denim T shirt Black </a>
+										</h4>
+										<span class="size"> 12 x 1.5 L </span>
+
+										<div class="price">
+											<span> $8.80 </span>
+										</div>
+									</div>
+								</td>
+								<td class="delete" style="">
+
+									<button type="button" class="close">
+										<span aria-hidden="true">×</span>
+									</button>
+
+								</td>
+							</tr>
+
+
+							<tr class="miniCartProduct">
+								<td class="miniCartProductThumb" style="">
+									<div>
+										<a href="product-details.html"> <img alt="img"
+											src="images/product/9.jpg">
+										</a>
+									</div>
+								</td>
+								<td style="">
+									<div class="miniCartDescription">
+										<h4>
+											<a href="product-details.html"> Product Item </a>
+										</h4>
+										<span class="size"> 12 x 1.5 L </span>
+
+										<div class="price">
+											<span> $90 </span>
+										</div>
+									</div>
+								</td>
+								<td class="delete" style="">
+
+									<button type="button" class="close">
+										<span aria-hidden="true">×</span>
+									</button>
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!--/.scroll-pane-->
+
+				<div class="miniCartFooter cart-panel-footer clearfix">
+
+					<h3 class="text-right subtotal">Subtotal: $210</h3>
+
+					<div class="col-sm-6 ">
+						<a class="btn btn-danger  btn-block"> <i
+							class="fa fa-shopping-cart"> </i> VIEW CART
+						</a>
+					</div>
+
+					<div class="col-sm-6 ">
+
+						<a class="btn  btn-primary btn-block "> CHECKOUT </a>
+
+					</div>
+				</div>
+
+				<!--/.miniCartFooter-->
+
+			</div>
+			<!--/.cartMenu-->
+
+		</div>
+		<!--.cart-sidebar-content-->
+	</aside>
+	<!-- /.cart-sidebar -->
+
 
 	<!-- Modal Login start -->
-	<div class="modal signUpContent fade" id="ModalLogin" tabindex="-1"
-		role="dialog">
+
+	<div class="modal signUpContent fade" id="ModalLogin" role="dialog"
+		style="z-index: 20000">
 		<div class="modal-dialog ">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -346,7 +424,7 @@ if (isset ( $_SESSION ['id'] )) {
 						aria-hidden="true">&times;</button>
 					<h3 class="modal-title-site text-center">Login to 17Jungle</h3>
 				</div>
-				<form action="login.php"  method="post" >
+				<form action="login.php" method="post">
 					<div class="modal-body">
 						<div class="form-group login-username">
 							<div>
@@ -394,218 +472,285 @@ if (isset ( $_SESSION ['id'] )) {
 	</div>
 	<!-- /.Modal Login -->
 
-
 	<!-- Fixed navbar start -->
-<div class="navbar navbar-default navbar-hero navbar-hero-center  navbar-fixed-top megamenu" role="navigation">
+	<div
+		class="navbar navbar-default navbar-hero navbar-hero-center  navbar-fixed-top megamenu"
+		role="navigation">
 
-    <div class="container-fluid ">
-        <div class="navbar-header">
-        
-            <button style="float: left;" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span
-                    class="sr-only"> Toggle navigation </span> <span class="icon-bar"> </span> <span
-                    class="icon-bar"> </span> <span class="icon-bar"> </span></button>
-            
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-cart"><i
-                    class="fa fa-shopping-cart colorWhite"> </i> <span
-                    class="cartRespons colorWhite">Package</span></button>
-         
+		<div class="container-fluid ">
+			<div class="navbar-header">
 
-            <!-- this part for mobile -->
-            <div class="search-box pull-right hidden-lg hidden-md hidden-sm">
-                <div class="input-group">
-                    <button class="btn btn-nobg search-trigger" type="button"><i class="fa fa-search"> </i></button>
-                </div>
-                <!-- /input-group -->
+				<!-- <ul class="nav navbar-nav ">
+                <li><a class="menu-sidebar-toggle"> <i class="fa fa-bars"></i> MENU </a></li>
+            </ul>
+         -->
+				<a class="menu-sidebar-toggle">
+					<button style="float: left;" type="button" class="navbar-toggle"
+						data-toggle="collapse" data-target="">
+						<span class="sr-only"> Toggle navigation </span> <span
+							class="icon-bar"> </span> <span class="icon-bar"> </span> <span
+							class="icon-bar"> </span>
+					</button>
+				</a>
 
-            </div>
-                
-         <a style="float: right;" class="navbar-brand hidden-lg hidden-md hidden-sm " href="index.php"> <img src="images/logo-dark.png"
-                                                                                           alt="TSHOP"> </a>
-        </div>
-
-        <!-- this part is duplicate from cartMenu  keep it for mobile -->
-        <div class="navbar-cart  collapse">
-            <div class="cartMenu  col-lg-4 col-xs-12 col-md-4 ">
-                <div class="w100 miniCartTable scroll-pane">
-                    <table>
-                        <tbody>
-                        <tr class="miniCartProduct">
-                            <td style="width:20%" class="miniCartProductThumb">
-                                <div><a href="product-details.html"> <img src="images/product/3.jpg" alt="img"> </a>
-                                </div>
-                            </td>
-                            <td style="width:40%">
-                                <div class="miniCartDescription">
-                                    <h4><a href="product-details.html"> TSHOP T shirt Black </a></h4>
-                                    <span class="size"> 12 x 1.5 L </span>
-
-                                    <div class="price"><span> $8.80 </span></div>
-                                </div>
-                            </td>
-                            <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                            <td style="width:15%" class="miniCartSubtotal"><span> $8.80 </span></td>
-                            <td style="width:5%" class="delete"><a> x </a></td>
-                        </tr>
-                        <tr class="miniCartProduct">
-                            <td style="width:20%" class="miniCartProductThumb">
-                                <div><a href="product-details.html"> <img src="images/product/2.jpg" alt="img"> </a>
-                                </div>
-                            </td>
-                            <td style="width:40%">
-                                <div class="miniCartDescription">
-                                    <h4><a href="product-details.html"> TSHOP T shirt Black </a></h4>
-                                    <span class="size"> 12 x 1.5 L </span>
-
-                                    <div class="price"><span> $8.80 </span></div>
-                                </div>
-                            </td>
-                            <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                            <td style="width:15%" class="miniCartSubtotal"><span> $8.80 </span></td>
-                            <td style="width:5%" class="delete"><a> x </a></td>
-                        </tr>
-                        <tr class="miniCartProduct">
-                            <td style="width:20%" class="miniCartProductThumb">
-                                <div><a href="product-details.html"> <img src="images/product/5.jpg" alt="img"> </a>
-                                </div>
-                            </td>
-                            <td style="width:40%">
-                                <div class="miniCartDescription">
-                                    <h4><a href="product-details.html"> TSHOP T shirt Black </a></h4>
-                                    <span class="size"> 12 x 1.5 L </span>
-
-                                    <div class="price"><span> $8.80 </span></div>
-                                </div>
-                            </td>
-                            <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                            <td style="width:15%" class="miniCartSubtotal"><span> $8.80 </span></td>
-                            <td style="width:5%" class="delete"><a> x </a></td>
-                        </tr>
-                        <tr class="miniCartProduct">
-                            <td style="width:20%" class="miniCartProductThumb">
-                                <div><a href="product-details.html"> <img src="images/product/3.jpg" alt="img"> </a>
-                                </div>
-                            </td>
-                            <td style="width:40%">
-                                <div class="miniCartDescription">
-                                    <h4><a href="product-details.html"> TSHOP T shirt Black </a></h4>
-                                    <span class="size"> 12 x 1.5 L </span>
-
-                                    <div class="price"><span> $8.80 </span></div>
-                                </div>
-                            </td>
-                            <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                            <td style="width:15%" class="miniCartSubtotal"><span> $8.80 </span></td>
-                            <td style="width:5%" class="delete"><a> x </a></td>
-                        </tr>
-                        <tr class="miniCartProduct">
-                            <td style="width:20%" class="miniCartProductThumb">
-                                <div><a href="product-details.html"> <img src="images/product/3.jpg" alt="img"> </a>
-                                </div>
-                            </td>
-                            <td style="width:40%">
-                                <div class="miniCartDescription">
-                                    <h4><a href="product-details.html"> TSHOP T shirt Black </a></h4>
-                                    <span class="size"> 12 x 1.5 L </span>
-
-                                    <div class="price"><span> $8.80 </span></div>
-                                </div>
-                            </td>
-                            <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                            <td style="width:15%" class="miniCartSubtotal"><span> $8.80 </span></td>
-                            <td style="width:5%" class="delete"><a> x </a></td>
-                        </tr>
-                        <tr class="miniCartProduct">
-                            <td style="width:20%" class="miniCartProductThumb">
-                                <div><a href="product-details.html"> <img src="images/product/4.jpg" alt="img"> </a>
-                                </div>
-                            </td>
-                            <td style="width:40%">
-                                <div class="miniCartDescription">
-                                    <h4><a href="product-details.html"> TSHOP T shirt Black </a></h4>
-                                    <span class="size"> 12 x 1.5 L </span>
-
-                                    <div class="price"><span> $8.80 </span></div>
-                                </div>
-                            </td>
-                            <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                            <td style="width:15%" class="miniCartSubtotal"><span> $8.80 </span></td>
-                            <td style="width:5%" class="delete"><a> x </a></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!--/.miniCartTable-->
-
-                <div class="miniCartFooter  miniCartFooterInMobile text-right">
-                    <h3 class="text-right subtotal"> Subtotal: $210 </h3>
-                    <a class="btn btn-sm btn-danger" href="cart.html"> <i class="fa fa-shopping-cart"> </i> VIEW CART
-                    </a> <a href="checkout-0.html"
-                            class="btn btn-sm btn-primary"> CHECKOUT </a></div>
-                <!--/.miniCartFooter-->
-
-            </div>
-            <!--/.cartMenu-->
-        </div>
-        <!--/.navbar-cart-->
-
-        <div class="navbar-collapse collapse">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-cart">
+					<i class="fa fa-shopping-cart colorWhite"> </i> <span
+						class="cartRespons colorWhite">Package</span>
+				</button>
 
 
-            <!-- In nav-center you can't use mega menu. But You can only use simple dropdown.
+				<!-- this part for mobile -->
+				<div class="search-box pull-right hidden-lg hidden-md hidden-sm">
+					<div class="input-group">
+						<button class="btn btn-nobg search-trigger" type="button">
+							<i class="fa fa-search"> </i>
+						</button>
+					</div>
+					<!-- /input-group -->
+
+				</div>
+
+				<a style="float:right;"
+					class="navbar-brand hidden-lg hidden-md hidden-sm "
+					href="index.php"><span>Jungle<img src="images/17jungle_logo.png" alt="TSHOP"></span>
+				</a>
+			</div>
+
+			<!-- this part is duplicate from cartMenu  keep it for mobile -->
+			<div class="navbar-cart  collapse">
+				<div class="cartMenu  col-lg-4 col-xs-12 col-md-4 ">
+					<div class="w100 miniCartTable scroll-pane">
+						<table>
+							<tbody>
+								<tr class="miniCartProduct">
+									<td style="width: 20%" class="miniCartProductThumb">
+										<div>
+											<a href="product-details.html"> <img
+												src="images/product/3.jpg" alt="img">
+											</a>
+										</div>
+									</td>
+									<td style="width: 40%">
+										<div class="miniCartDescription">
+											<h4>
+												<a href="product-details.html"> TSHOP T shirt Black </a>
+											</h4>
+											<span class="size"> 12 x 1.5 L </span>
+
+											<div class="price">
+												<span> $8.80 </span>
+											</div>
+										</div>
+									</td>
+									<td style="width: 10%" class="miniCartQuantity"><a> X 1 </a></td>
+									<td style="width: 15%" class="miniCartSubtotal"><span> $8.80 </span></td>
+									<td style="width: 5%" class="delete"><a> x </a></td>
+								</tr>
+								<tr class="miniCartProduct">
+									<td style="width: 20%" class="miniCartProductThumb">
+										<div>
+											<a href="product-details.html"> <img
+												src="images/product/2.jpg" alt="img">
+											</a>
+										</div>
+									</td>
+									<td style="width: 40%">
+										<div class="miniCartDescription">
+											<h4>
+												<a href="product-details.html"> TSHOP T shirt Black </a>
+											</h4>
+											<span class="size"> 12 x 1.5 L </span>
+
+											<div class="price">
+												<span> $8.80 </span>
+											</div>
+										</div>
+									</td>
+									<td style="width: 10%" class="miniCartQuantity"><a> X 1 </a></td>
+									<td style="width: 15%" class="miniCartSubtotal"><span> $8.80 </span></td>
+									<td style="width: 5%" class="delete"><a> x </a></td>
+								</tr>
+								<tr class="miniCartProduct">
+									<td style="width: 20%" class="miniCartProductThumb">
+										<div>
+											<a href="product-details.html"> <img
+												src="images/product/5.jpg" alt="img">
+											</a>
+										</div>
+									</td>
+									<td style="width: 40%">
+										<div class="miniCartDescription">
+											<h4>
+												<a href="product-details.html"> TSHOP T shirt Black </a>
+											</h4>
+											<span class="size"> 12 x 1.5 L </span>
+
+											<div class="price">
+												<span> $8.80 </span>
+											</div>
+										</div>
+									</td>
+									<td style="width: 10%" class="miniCartQuantity"><a> X 1 </a></td>
+									<td style="width: 15%" class="miniCartSubtotal"><span> $8.80 </span></td>
+									<td style="width: 5%" class="delete"><a> x </a></td>
+								</tr>
+								<tr class="miniCartProduct">
+									<td style="width: 20%" class="miniCartProductThumb">
+										<div>
+											<a href="product-details.html"> <img
+												src="images/product/3.jpg" alt="img">
+											</a>
+										</div>
+									</td>
+									<td style="width: 40%">
+										<div class="miniCartDescription">
+											<h4>
+												<a href="product-details.html"> TSHOP T shirt Black </a>
+											</h4>
+											<span class="size"> 12 x 1.5 L </span>
+
+											<div class="price">
+												<span> $8.80 </span>
+											</div>
+										</div>
+									</td>
+									<td style="width: 10%" class="miniCartQuantity"><a> X 1 </a></td>
+									<td style="width: 15%" class="miniCartSubtotal"><span> $8.80 </span></td>
+									<td style="width: 5%" class="delete"><a> x </a></td>
+								</tr>
+								<tr class="miniCartProduct">
+									<td style="width: 20%" class="miniCartProductThumb">
+										<div>
+											<a href="product-details.html"> <img
+												src="images/product/3.jpg" alt="img">
+											</a>
+										</div>
+									</td>
+									<td style="width: 40%">
+										<div class="miniCartDescription">
+											<h4>
+												<a href="product-details.html"> TSHOP T shirt Black </a>
+											</h4>
+											<span class="size"> 12 x 1.5 L </span>
+
+											<div class="price">
+												<span> $8.80 </span>
+											</div>
+										</div>
+									</td>
+									<td style="width: 10%" class="miniCartQuantity"><a> X 1 </a></td>
+									<td style="width: 15%" class="miniCartSubtotal"><span> $8.80 </span></td>
+									<td style="width: 5%" class="delete"><a> x </a></td>
+								</tr>
+								<tr class="miniCartProduct">
+									<td style="width: 20%" class="miniCartProductThumb">
+										<div>
+											<a href="product-details.html"> <img
+												src="images/product/4.jpg" alt="img">
+											</a>
+										</div>
+									</td>
+									<td style="width: 40%">
+										<div class="miniCartDescription">
+											<h4>
+												<a href="product-details.html"> TSHOP T shirt Black </a>
+											</h4>
+											<span class="size"> 12 x 1.5 L </span>
+
+											<div class="price">
+												<span> $8.80 </span>
+											</div>
+										</div>
+									</td>
+									<td style="width: 10%" class="miniCartQuantity"><a> X 1 </a></td>
+									<td style="width: 15%" class="miniCartSubtotal"><span> $8.80 </span></td>
+									<td style="width: 5%" class="delete"><a> x </a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--/.miniCartTable-->
+
+					<div class="miniCartFooter  miniCartFooterInMobile text-right">
+						<h3 class="text-right subtotal">Subtotal: $210</h3>
+						<a class="btn btn-sm btn-danger" href="cart.html"> <i
+							class="fa fa-shopping-cart"> </i> VIEW CART
+						</a> <a href="checkout-0.html" class="btn btn-sm btn-primary">
+							CHECKOUT </a>
+					</div>
+					<!--/.miniCartFooter-->
+
+				</div>
+				<!--/.cartMenu-->
+			</div>
+			<!--/.navbar-cart-->
+
+			<div class="navbar-collapse collapse">
+
+
+				<!-- In nav-center you can't use mega menu. But You can only use simple dropdown.
             Better use childless menu in center menu  -->
 
-            <ul class="nav navbar-nav ">
-                <li><a class="menu-sidebar-toggle"> <i class="fa fa-bars"></i> MENU </a></li>
+				<ul class="nav navbar-nav ">
+					<li><a class="menu-sidebar-toggle"> <i class="fa fa-bars"></i> MENU
+					</a></li>
 
 
-            </ul>
+				</ul>
 
-            <ul class="nav navbar-nav nav-center hidden-xs">
-                <li>
-                    <a class="navbar-brand" href="index.php"> <img src="images/logo-dark.png" alt="TSHOP"> </a>
-                </li>
-            </ul>
+				<ul class="nav navbar-nav nav-center hidden-xs">
+					<li><a class="navbar-brand" href="index.php"><span>jungle<img
+							src="images/17jungle_biglogo.png" alt="TSHOP" width="60px" height="60px">
+					</span></a></li>
+				</ul>
 
 
-            <ul class="nav navbar-nav navbar-right">
-                <li class="hide-xs"><a class="btn btn-nobg  search-trigger"><i class="fa fa-search"> </i></a></li>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="hide-xs"><a class="btn btn-nobg  search-trigger"><i
+							class="fa fa-search"> </i></a></li>
+
+
+					<!-- <li><a data-target="#ModalLogin" data-toggle="modal"> Login <i class="fa fa-user"></i> </a></li> -->
                 
-                
-                <!-- <li><a data-target="#ModalLogin" data-toggle="modal"> Login <i class="fa fa-user"></i> </a></li> -->
-                
-                <?php 
-							
-							if (!isset($_SESSION['id']))//로그인안됨
-							{
-								echo "<li><a href='#' data-toggle='modal' data-target='#ModalLogin'>
+                <?php
+																
+																if (! isset ( $_SESSION ['id'] )) // 로그인안됨
+{
+																	echo "<li><a href='#' data-toggle='modal' data-target='#ModalLogin'>
 										 Login <i class='fa fa-user'></i></a></li>";
-							}
-							else{
-								echo "<li><a href='user_info.php'>$check_session_name 님</a></li>
+																} else {
+																	echo "<li><a href='user_info.php'>$check_session_name 님</a></li>
 								<li><a href='logout.php'>logout</a></li>";
-							}
-				?>
+																}
+																?>
                 
                 
                 <li class="hide-xs cart-sidebar-toggle"><a> Package <i
-                        class="glyphicon-shopping-cart glyphicon"></i> </a></li>
-            </ul>
+							class="glyphicon-shopping-cart glyphicon"></i>
+					</a></li>
+				</ul>
 
-        </div>
-        <!--/.nav-collapse -->
+			</div>
+			<!--/.nav-collapse -->
 
-    </div>
-    <!--/.container -->
+		</div>
+		<!--/.container -->
 
-    <div class="search-full text-right"><a class="pull-right search-close"> <i class=" fa fa-times-circle"> </i> </a>
+		<div class="search-full text-right">
+			<a class="pull-right search-close"> <i class=" fa fa-times-circle"> </i>
+			</a>
 
-        <div class="searchInputBox pull-right">
-            <input type="search" data-searchurl="search?=" name="q" placeholder="start typing and hit enter to search"
-                   class="search-input">
-            <button class="btn-nobg search-btn" type="submit"><i class="fa fa-search"> </i></button>
-        </div>
-    </div>
-    <!--/.search-full-->
+			<div class="searchInputBox pull-right">
+				<input type="search" data-searchurl="search?=" name="q"
+					placeholder="start typing and hit enter to search"
+					class="search-input">
+				<button class="btn-nobg search-btn" type="submit">
+					<i class="fa fa-search"> </i>
+				</button>
+			</div>
+		</div>
+		<!--/.search-full-->
 
-</div>
-<!-- /.Fixed navbar  -->
+	</div>
+	<!-- /.Fixed navbar  -->
